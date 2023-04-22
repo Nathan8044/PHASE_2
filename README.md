@@ -1,4 +1,8 @@
 # PHASE_2
+<h1 align=center>NETMO</h1>
+
+<h2 align=center>Nathan Rampersaud</h2>
+### Description
 This is PHASE_2 for NETMO. The name has been change from "NETMOS" to "NETMO" to be even more complex and unique. "NETMO" comes from COSMO, which is the Greek Lettering for COSMOS, which is another name for the cosmos flower. 
 
 For PHASE_2, bootstrap will added to PHASE_1 original adaptations. 
