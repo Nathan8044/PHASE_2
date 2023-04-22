@@ -11,20 +11,20 @@ The next step afterwards, is to compile research on other automation softwares t
 
 These are things that I wish to include in PHASE_2(Subject to Change):
 ``` 
-    Markup : 1. Speed Policy Changes
-             2. Trunking & Access Port Interface Creation 
-             3. Shut no shut commands 
-             4. Adding IP Address 
-             5. Configure VLAN 
-             6. Exit Interface Static Route
-             7. Fully-specified route 
-             8. IP Default-Gateway
-             9. Routing Information Protocol (RIPv2)
-             10. Staic Port Security 
-             11. show ip int brief
-             12. show ip route
-             13. show run 
-             14. show vlan brief 
+     1. Speed Policy Changes
+     2. Trunking & Access Port Interface Creation 
+     3. Shut no shut commands 
+     4. Adding IP Address 
+     5. Configure VLAN 
+     6. Exit Interface Static Route
+     7. Fully-specified route 
+     8. IP Default-Gateway
+     9. Routing Information Protocol (RIPv2)
+     10. Staic Port Security 
+     11. show ip int brief
+     12. show ip route
+     13. show run 
+     14. show vlan brief 
 ```
 A CSV File, with Text files will be used for data collection and to collect and monitor. 
 
