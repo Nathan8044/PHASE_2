@@ -22,7 +22,7 @@ These are things that I wish to include in PHASE_2(Subject to Change):
      7. Fully-specified route 
      8. IP Default-Gateway
      9. Routing Information Protocol (RIPv2)
-     10. Staic Port Security 
+     10. Static Port Security 
      11. show ip int brief
      12. show ip route
      13. show run 
