@@ -10,20 +10,20 @@ For PHASE_2, bootstrap will added to PHASE_1 original adaptations.
 The next step afterwards, is to compile research on other automation softwares to use for PHASE_2. I am unsure if Netmiko will be able to withstand the more complex network configurations. 
 
 These are things that I wish to include in PHASE_2(Subject to Change): 
-    - Speed Policy Changes
-    - Trunking & Access Port Interface Creation 
-    - Shut no shut commands 
-    - Adding IP Address 
-    - Configure VLAN 
-    - Exit Interface Static Route
-    - Fully-specified route 
-    - IP Default-Gateway
-    - Routing Information Protocol (RIPv2)
-    - Staic Port Security 
-    - show ip int brief
-    - show ip route
-    - show run 
-    - show vlan brief 
+    Markup 1. Speed Policy Changes
+           2. Trunking & Access Port Interface Creation 
+           3. Shut no shut commands 
+           4. Adding IP Address 
+           5. Configure VLAN 
+           6. Exit Interface Static Route
+           7. Fully-specified route 
+           8. IP Default-Gateway
+           9. Routing Information Protocol (RIPv2)
+           10. Staic Port Security 
+           11. show ip int brief
+           12. show ip route
+           13. show run 
+           14. show vlan brief 
     
 A CSV File, with Text files will be used for data collection and to collect and monitor. 
 
