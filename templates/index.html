@@ -12,14 +12,14 @@
 
 </head>
 <body>
-  <form action="/calculate" method="post">
+  <form action="/calculate" method="post" name="calculate">
    <div class="form-group">
      <label for="ipaddress">IP Address</label>
-     <input type="ipaddress" class="form-control" id="ipaddress" aria-describedby="IP" placeholder="Enter the IP Address">
+     <input type="text" class="form-control" id="ipaddress" aria-describedby="IP" placeholder="Enter the IP Address">
    </div>
    <div class="form-group">
      <label for="username">Username</label>
-     <input type="username" class="form-control" id="username" placeholder="Username">
+     <input type="text" class="form-control" id="username" placeholder="Username">
    </div>
    <div class="form-group">
      <label for="password1">Password</label>
@@ -27,19 +27,19 @@
    </div>
    <div class="form-group">
      <label for="secret">Enable Secret</label>
-     <input type="secret" class="form-control" id="secret" aria-describedby="secret" placeholder="Enter your Enable Secret Password">
+     <input type="password" class="form-control" id="secret" aria-describedby="secret" placeholder="Enter your Enable Secret Password">
    </div>
    <div class="form-group">
      <label for="port">Port Info</label>
-     <input type="port" class="form-control" id="port" aria-describedby="port" placeholder="Enter the Port Info (xx/xx/xx)">
+     <input type="text" class="form-control" id="port" aria-describedby="port" placeholder="Enter the Port Info (xx/xx/xx)">
    </div>
    <div class="form-group">
      <label for="vlan">VLAN Number</label>
-     <input type="vlan" class="form-control" id="vlan" aria-describedby="vlan" placeholder="Enter the VLAN Number">
+     <input type="text" class="form-control" id="vlan" aria-describedby="vlan" placeholder="Enter the VLAN Number">
    </div>
    <div class="form-group">
      <label for="description">Description</label>
-     <input type="description" class="form-control" id="description" aria-describedby="description" placeholder="Enter a Description">
+     <input type="text" class="form-control" id="description" aria-describedby="description" placeholder="Enter a Description">
    </div>
    <div class="form-check">
      <input type="checkbox" class="form-check-input" id="exampleCheck1">
