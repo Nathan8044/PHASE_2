@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template
 from netmiko import ConnectHandler 
-import math
+
 calculate_blueprint = Blueprint(__name__, "calculate")
 
 @calculate_blueprint.route("/")
