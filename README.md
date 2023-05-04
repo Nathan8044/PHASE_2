@@ -27,7 +27,7 @@ These are things that I wish to include in PHASE_2(Subject to Change):
      12. show ip route
      13. show run 
      14. show vlan brief 
-     >>Upload **.txt** and **.csv files** 
+     **Upload .txt and .csv files**
 ```
 
 
