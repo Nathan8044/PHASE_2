@@ -22,42 +22,54 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          
-          <a class="nav-link" href="interface.html">Interface Configuration</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Interface Configuration
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="interface_changes.html">Interface Changes</a>
+            <a class="dropdown-item" href="interface_security.html">Interface Security</a>
+
+          </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            More
+            Global Configuration
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="index.html">How you can help</a>
-            <a class="dropdown-item" href="#">Initiatives</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">About</a>
+            <a class="dropdown-item" href="routing.html">IP Routing</a>
+            <a class="dropdown-item" href="global_commands.html">Other Global Commands</a>
+
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Contact</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Monitoring
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="show_commands.html">Show Commands</a>
+            <a class="dropdown-item" href="priv_commands.html">Other Privileged Commands</a>
+
+          </div>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="upload.html">Upload <span class="sr-only">(current)</span></a>
+                                                                
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="..." aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
   </nav>
   <!--This is where navbar function ends.-->
-  <h1>Configure this switch</h1>
+  <h1>This is the home page</h1>
 
-  <!--Start of bootstrap form-->
-  <p>new home page</p>
 
-  <!--End of form from bootstrap-->
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
