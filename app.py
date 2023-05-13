@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 app.register_blueprint(views, url_prefix="/views")
 app.register_blueprint(main_functions_blueprint, url_prefix="/main_functions")
+#app.register_blueprint(interface_changes_blueprint, url_prefix="/interface_changes")
 
 
 

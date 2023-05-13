@@ -1,5 +1,6 @@
 from flask import Blueprint, request, render_template
 from netmiko import ConnectHandler 
+calculate_blueprint = Blueprint(__name__, "calculate")
 
 
 
