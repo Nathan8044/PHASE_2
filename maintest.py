@@ -1,15 +1,29 @@
 from flask import Blueprint, request, render_template
 from netmiko import ConnectHandler 
-calculate_blueprint = Blueprint(__name__, "calculate")
 
 
+def ssh_connection():
+    pass
 
-@calculate_blueprint.route("/")
-def calculate_form():
+@home_blueprint.route("/")
+def home_form():
     return render_template("index.html")
 
-@calculate_blueprint.route("/", methods=["POST"])
-def calculate():
+@home.route("/", methods=["POST"])
+def home():
+
+ #we currently don't want to do anything in home. It should not return anything 
+
+ pass
+
+
+#interface changes function
+@interface_changes_blueprint.route("/")
+def interface_changes_form():
+    return render_template("interfaces_changes.html")
+
+@interface_changes.route("/", methods=["POST"])
+def interface_changes():
     ip = str(request.form["ipaddress"])
     port = str(request.form["port"])
     vlan_number = str(request.form['vlan'])
@@ -72,3 +86,14 @@ def calculate():
 
 
     return render_template("index.html", result=result)
+   
+    
+#vlan changes function
+'''
+#this is an example of how to write a function for a new page with new changes and connections to the other .html pages
+
+@vlan_changes_blueprint.route("/")
+def vlan_changes_form():
+    return render_template("vlan_changes.html")
+'''
+
