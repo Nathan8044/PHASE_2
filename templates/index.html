@@ -1,53 +1,195 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NETMO</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    
+    
+    <link  href="bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-    <!-- Optional theme file -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    
+  <title>NESMO</title>
+  <link rel="icon" href="NETMO_LOGO.png">
+  
 
 </head>
-<body>
-  <form action="/calculate" method="post" name="calculate">
-   <div class="form-group">
-     <label for="ipaddress">IP Address</label>
-     <input type="text" class="form-control" id="ipaddress" aria-describedby="IP" placeholder="Enter the IP Address">
-   </div>
-   <div class="form-group">
-     <label for="username">Username</label>
-     <input type="text" class="form-control" id="username" placeholder="Username">
-   </div>
-   <div class="form-group">
-     <label for="password1">Password</label>
-     <input type="password" class="form-control" id="password" aria-describedby="password" placeholder="Enter your Password">
-   </div>
-   <div class="form-group">
-     <label for="secret">Enable Secret</label>
-     <input type="password" class="form-control" id="secret" aria-describedby="secret" placeholder="Enter your Enable Secret Password">
-   </div>
-   <div class="form-group">
-     <label for="port">Port Info</label>
-     <input type="text" class="form-control" id="port" aria-describedby="port" placeholder="Enter the Port Info (xx/xx/xx)">
-   </div>
-   <div class="form-group">
-     <label for="vlan">VLAN Number</label>
-     <input type="text" class="form-control" id="vlan" aria-describedby="vlan" placeholder="Enter the VLAN Number">
-   </div>
-   <div class="form-group">
-     <label for="description">Description</label>
-     <input type="text" class="form-control" id="description" aria-describedby="description" placeholder="Enter a Description">
-   </div>
-   <div class="form-check">
-     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-     <label class="form-check-label" for="exampleCheck1">Confirm this is the right configuration you would like sent</label>
-   </div>
-   <button type="submit" class="btn btn-primary">Send Config</button>
-  </form>
+  <body>
+
+    <header>
+  <!--This is the navbar function.-->
+  <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">NESMO</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Interface Configuration
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="interface_changes.html">Interface Changes</a></li>
+              <li><a class="dropdown-item" href="interface_security.html">Interface Security</a></li>
+              
+              
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Global Configuration
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="routing.html">Routing Commands</a></li>
+              <li><a class="dropdown-item" href="global_commands.html">Global Commands</a></li>
+              
+             
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Monitoring
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="show_commands.html">Show Commands</a></li>
+              <li><a class="dropdown-item" href="priv_commands.html">Privileged Executive Commands</a></li>
+              
+             
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="upload.html">Upload</a>
+          </li>
+         
   
-   
-</body>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        
+        
+
+      </div>
+    </div>
+  </nav>
+  <!--This is where navbar function ends.-->
+    </header>
+    
+    <!--Slideshow-->
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="5000">
+          <img src="website_a.png" class="d-block w-100" alt="First Slide">
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="website_b.png" class="d-block w-100" alt="Second Slide">
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="website_c.png" class="d-block w-100" alt="Third Slide">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+      <!-- end of slideshow -->
+
+      <div class="container marketing">
+
+        <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">Communication. </h2>
+            <p class="lead">Computer networks enable seamless communication between devices, allowing data transfer and resource sharing. They form the backbone of modern connectivity, facilitating global information exchange. Through protocols and routers, networks ensure efficient data transmission. From local area networks to the internet, these interconnected systems have revolutionized how we communicate and access information.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="networks.png" alt="placeholder">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Security. </h2>
+            <p class="lead">Security in computer networks is paramount to protect against threats and unauthorized access. Measures like firewalls, encryption, and access controls safeguard data integrity, confidentiality, and availability. Intrusion detection systems and regular audits help identify vulnerabilities. Network security ensures safe transmission and storage of sensitive information, maintaining trust and privacy.</p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" src="security.png" alt="Generic placeholder image">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">Automation. </h2>
+            <p class="lead">Network automation streamlines network management by using software and tools to automate manual tasks. It enables configuration, provisioning, and monitoring of network devices, enhancing efficiency and reducing human errors. Automation technologies like SDN and orchestration simplify network operations, improve scalability, and enable rapid deployment and agility in dynamic environments.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="machine_learning.png" alt="Generic placeholder image">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+
+      </div><!-- /.container -->
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-title text-center">
+            <h4>Login</h4>
+          </div>
+          <div class="d-flex flex-column text-center">
+            <form>
+              <div class="form-group">
+                <input type="email" class="form-control" id="email1"placeholder="Your email address...">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="password1" placeholder="Your password...">
+              </div>
+              <button type="button" class="btn btn-info btn-block btn-round">Login</button>
+            </form>
+            
+           
+      </div>
+        
+    </div>
+
+
+      <!-- FOOTER -->
+      <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2023 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+       
+      </footer>
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+
+  
+  <script src="bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  </body>
 </html>
+
