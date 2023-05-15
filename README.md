@@ -1,5 +1,5 @@
 # PHASE_2
-<h1 align=center>NETMO</h1>
+<h1 align=center>NESMO</h1>
 
 <h2 align=center>Nathan Rampersaud</h2>
 
