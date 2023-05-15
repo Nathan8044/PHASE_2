@@ -9,7 +9,7 @@ interface_changes_blueprint = Blueprint(__name__, "interface_changes")
 def interface_changes_form():
     return render_template("interfaces_changes.html")
 
-@interface_changes_blueprint.route("/", mnethods=["POST"])
+@interface_changes_blueprint.route("/", methods=["POST"])
 def interface_changes():
     ip = str(request.form["ipaddress"])
     port = str(request.form["port"])
