@@ -5,7 +5,7 @@ from netmiko import ConnectHandler
 interface_changes_blueprint = Blueprint(__name__, "interface_changes")
 
 #Start of Interface Changes Blueprint
-@interface_changes.route("/")
+@interface_changes_blueprint.route("/")
 def interface_changes_form():
     return render_template("interfaces_changes.html")
 

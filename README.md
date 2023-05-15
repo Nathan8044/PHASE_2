@@ -7,6 +7,7 @@ This is PHASE_2 for NETMO. The name has been change from "NETMOS" to "NETMO" to 
 
 For PHASE_2, bootstrap will added to PHASE_1 original adaptations. 
 
+
 The next step afterwards, is to compile research on other automation softwares to use for PHASE_2. I am unsure if Netmiko will be able to withstand the more complex network configurations. 
 
 
