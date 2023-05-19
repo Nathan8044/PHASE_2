@@ -7,11 +7,11 @@
   
     
     
-    <link  href="bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
 
     
-  <title>NESMO</title>
-  <link rel="icon" href="NETMO_LOGO.png">
+  <title>NESMOS</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/NETMO_LOGO.png')}}">
   
 
 </head>
@@ -21,7 +21,7 @@
   <!--This is the navbar function.-->
   <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{ url_for('home')}}">NESMO</a>
+      <a class="navbar-brand" href="{{ url_for('views.home')}}">NESMOS</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,8 +32,8 @@
               Interface Configuration
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{{ url_for('interface_changes')}}">Interface Changes</a></li>
-              <li><a class="dropdown-item" href="interface_security.html">Interface Security</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('views.interface_changes_form')}}">Interface Changes</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('views.interface_security')}}">Interface Security</a></li>
               
               
             </ul>
@@ -43,8 +43,8 @@
               Global Configuration
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="routing.html">Routing Commands</a></li>
-              <li><a class="dropdown-item" href="global_commands.html">Global Commands</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('views.routing')}}">Routing Commands</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('views.global_commands')}}">Global Commands</a></li>
               
              
             </ul>
@@ -54,14 +54,14 @@
               Monitoring
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="show_commands.html">Show Commands</a></li>
-              <li><a class="dropdown-item" href="priv_commands.html">Privileged Executive Commands</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('views.show_commands')}}">Show Commands</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('views.priv_commands')}}">Privileged Executive Commands</a></li>
               
              
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="upload.html">Upload</a>
+            <a class="nav-link active" aria-current="page" href="{{ url_for('views.upload')}}">Upload</a>
           </li>
          
   
@@ -83,13 +83,14 @@
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="5000">
-          <img src="website_a.png" class="d-block w-100" alt="First Slide">
+          <img src="{{ url_for('static', filename='images/website_a.png')}}" class="d-block w-100" alt="First Slide">
         </div>
         <div class="carousel-item" data-bs-interval="5000">
-          <img src="website_b.png" class="d-block w-100" alt="Second Slide">
+            <img src="{{ url_for('static', filename='images/website_b.png')}}" class="d-block w-100" alt="Second Slide">
+
         </div>
         <div class="carousel-item" data-bs-interval="5000">
-          <img src="website_c.png" class="d-block w-100" alt="Third Slide">
+            <img src="{{ url_for('static', filename='images/website_c.png')}}" class="d-block w-100" alt="Third Slide">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -115,7 +116,7 @@
             <p class="lead">Computer networks enable seamless communication between devices, allowing data transfer and resource sharing. They form the backbone of modern connectivity, facilitating global information exchange. Through protocols and routers, networks ensure efficient data transmission. From local area networks to the internet, these interconnected systems have revolutionized how we communicate and access information.</p>
           </div>
           <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" src="networks.png" alt="placeholder">
+            <img class="featurette-image img-fluid mx-auto" src="{{ url_for('static', filename='images/networks.png')}}" alt="placeholder">
           </div>
         </div>
 
@@ -127,7 +128,7 @@
             <p class="lead">Security in computer networks is paramount to protect against threats and unauthorized access. Measures like firewalls, encryption, and access controls safeguard data integrity, confidentiality, and availability. Intrusion detection systems and regular audits help identify vulnerabilities. Network security ensures safe transmission and storage of sensitive information, maintaining trust and privacy.</p>
           </div>
           <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" src="security.png" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto" src="{{ url_for('static', filename='images/security.png')}}" alt="Generic placeholder image">
           </div>
         </div>
 
@@ -139,7 +140,7 @@
             <p class="lead">Network automation streamlines network management by using software and tools to automate manual tasks. It enables configuration, provisioning, and monitoring of network devices, enhancing efficiency and reducing human errors. Automation technologies like SDN and orchestration simplify network operations, improve scalability, and enable rapid deployment and agility in dynamic environments.</p>
           </div>
           <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" src="machine_learning.png" alt="Generic placeholder image">
+            <img class="featurette-image img-fluid mx-auto" src="{{ url_for('static', filename='images/machine_learning.png')}}" alt="Generic placeholder image">
           </div>
         </div>
 
@@ -188,8 +189,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
 
-    <script src="bootstrap.min.js" crossorigin="anonymous"></script>
-  <script src="bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='styles/bootstrap.bundle.min.js')}}"></script>
   </body>
 </html>
-

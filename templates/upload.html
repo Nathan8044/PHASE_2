@@ -7,7 +7,7 @@
   
     
     
-    <link  href="bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
     
   <title>NESMO</title>
   <link rel="icon" href="NETMO_LOGO.png">
@@ -16,67 +16,67 @@
 </head>
 
 <body>
-  <header>
-    <!--This is the navbar function.-->
-    <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('home')}}">NESMO</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Interface Configuration
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ url_for('interface_changes')}}">Interface Changes</a></li>
-                <li><a class="dropdown-item" href="interface_security.html">Interface Security</a></li>
-                
-                
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Global Configuration
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="routing.html">Routing Commands</a></li>
-                <li><a class="dropdown-item" href="global_commands.html">Global Commands</a></li>
-                
+    <header>
+        <!--This is the navbar function.-->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('views.home')}}">NESMOS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Interface Configuration
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ url_for('views.interface_changes_form')}}">Interface Changes</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.interface_security')}}">Interface Security</a></li>
+                    
+                    
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Global Configuration
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ url_for('views.routing')}}">Routing Commands</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.global_commands')}}">Global Commands</a></li>
+                    
+                   
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Monitoring
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ url_for('views.show_commands')}}">Show Commands</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.priv_commands')}}">Privileged Executive Commands</a></li>
+                    
+                   
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{{ url_for('views.upload')}}">Upload</a>
+                </li>
                
+        
               </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Monitoring
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="show_commands.html">Show Commands</a></li>
-                <li><a class="dropdown-item" href="priv_commands.html">Privileged Executive Commands</a></li>
-                
-               
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="upload.html">Upload</a>
-            </li>
-           
-    
-          </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-          
-          
-  
-        </div>
-      </div>
-    </nav>
-    <!--This is where navbar function ends.-->
-      </header>
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+              
+              
+      
+            </div>
+          </div>
+        </nav>
+        <!--This is where navbar function ends.-->
+          </header>
   <div class="container-sm">
     <div class="mb-3">
       <label for="formFile" class="form-label">Input your .txt and .csv</label>s
@@ -88,7 +88,7 @@
 
 
 
-  <script src="bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='styles/bootstrap.bundle.min.js')}}"></script>
 </body>
 
 </html>

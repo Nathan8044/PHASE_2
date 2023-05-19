@@ -7,7 +7,7 @@
   
     
     
-    <link  href="bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
     
   <title>NESMO</title>
   <link rel="icon" href="NETMO_LOGO.png">
@@ -18,9 +18,9 @@
 <body>
   <header>
     <!--This is the navbar function.-->
-    <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('home')}}">NESMO</a>
+        <a class="navbar-brand" href="{{ url_for('views.home')}}">NESMOS</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,8 +31,8 @@
                 Interface Configuration
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ url_for('interface_changes')}}">Interface Changes</a></li>
-                <li><a class="dropdown-item" href="interface_security.html">Interface Security</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('views.interface_changes_form')}}">Interface Changes</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('views.interface_security')}}">Interface Security</a></li>
                 
                 
               </ul>
@@ -42,8 +42,8 @@
                 Global Configuration
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="routing.html">Routing Commands</a></li>
-                <li><a class="dropdown-item" href="global_commands.html">Global Commands</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('views.routing')}}">Routing Commands</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('views.global_commands')}}">Global Commands</a></li>
                 
                
               </ul>
@@ -53,14 +53,14 @@
                 Monitoring
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="show_commands.html">Show Commands</a></li>
-                <li><a class="dropdown-item" href="priv_commands.html">Privileged Executive Commands</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('views.show_commands')}}">Show Commands</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('views.priv_commands')}}">Privileged Executive Commands</a></li>
                 
                
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="upload.html">Upload</a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('views.upload')}}">Upload</a>
             </li>
            
     
@@ -78,38 +78,38 @@
     <!--This is where navbar function ends.-->
       </header>
   <!-- This is where the form begins -->
-     <form action="/interface_changes" method="post" name="interface_changes">
+     <form action="/interfacechanges" method="post" name="interface_changes">
   <div class = 'container-sm'>
     <div class="form-group">
       <label for="ipaddress">IP Address</label>
-      <input type="text" class="form-control" id="ipaddress" aria-describedby="IP" placeholder="Enter the IP Address">
+      <input type="text" class="form-control" id="ipaddress" name="ipaddress" aria-describedby="IP" placeholder="Enter the IP Address">
     </div>
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" placeholder="Username">
+      <input type="text" class="form-control" id="username" name="username" placeholder="Username">
     </div>
     <div class="form-group">
       <label for="password1">Password</label>
-      <input type="password" class="form-control" id="password" aria-describedby="password"
+      <input type="password" class="form-control" id="password" name="password" aria-describedby="password"
         placeholder="Enter your Password">
     </div>
     <div class="form-group">
       <label for="secret">Enable Secret</label>
-      <input type="password" class="form-control" id="secret" aria-describedby="secret"
+      <input type="password" class="form-control" id="secret" name="secret" aria-describedby="secret"
         placeholder="Enter your Enable Secret Password">
     </div>
     <div class="form-group">
       <label for="port">Port Info</label>
-      <input type="text" class="form-control" id="port" aria-describedby="port"
+      <input type="text" class="form-control" id="port" name="port" aria-describedby="port"
         placeholder="Enter the Port Info (xx/xx/xx)">
     </div>
     <div class="form-group">
       <label for="vlan">VLAN Number</label>
-      <input type="text" class="form-control" id="vlan" aria-describedby="vlan" placeholder="Enter the VLAN Number">
+      <input type="text" class="form-control" id="vlan" name="vlan" aria-describedby="vlan" placeholder="Enter the VLAN Number">
     </div>
     <div class="form-group">
       <label for="description">Description</label>
-      <input type="text" class="form-control" id="description" aria-describedby="description"
+      <input type="text" class="form-control" id="description" name="description" aria-describedby="description"
         placeholder="Enter a Description">
     </div>
     <div class="form-check">
@@ -117,6 +117,7 @@
       <label class="form-check-label" for="exampleCheck1">Confirm this is the right configuration you would like to be
         sent</label>
     </div>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <button type="submit" class="btn btn-primary">Send Config</button>
   </form>
 
@@ -127,7 +128,7 @@
 
 
 
-  <script src="bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='styles/bootstrap.bundle.min.js')}}"></script>
 </body>
 
 </html>
