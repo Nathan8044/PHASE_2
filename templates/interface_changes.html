@@ -103,20 +103,30 @@
       <input type="text" class="form-control" id="port" name="port" aria-describedby="port"
         placeholder="Enter the Port Info (xx/xx/xx)">
     </div>
-    <div class="form-group">
-      <label for="vlan">VLAN Number</label>
-      <input type="text" class="form-control" id="vlan" name="vlan" aria-describedby="vlan" placeholder="Enter the VLAN Number">
+       <div class="form-group">
+      <label for="selectBox">Select an Access or Trunk Port:</label>
+      <select class="form-select" id="selectBox" name="selectBox" required>
+        <option value="">Choose an option</option>
+        <option value="option1">Access</option>
+        <option value="option2">Trunk</option>
+      </select>
     </div>
-    <div class="form-group">
-      <label for="description">Description</label>
-      <input type="text" class="form-control" id="description" name="description" aria-describedby="description"
-        placeholder="Enter a Description">
+
+    <div id="trunk_port" class="form-group d-none">
+      <label for="trunk_port">Enter All trunkated VLAN numbers seperated by commas(i.e. 100,200,300,...,XXX):</label>
+      <input type="text" class="form-control" id="trunk_port" name="trunk_port">
     </div>
+    <div id="access_port" class="form-group d-none">
+      <label for="access_port">Enter VLAN Number:</label>
+      <input type="text" class="form-control" id="access_port" name="access_port">
+    </div>
+  
     <div class="form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Confirm this is the right configuration you would like to be
         sent</label>
     </div>
+   
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <button type="submit" class="btn btn-primary">Send Config</button>
   </form>
