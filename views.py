@@ -106,3 +106,7 @@ def priv_commands():
 @views.route("/upload")
 def upload():
     return render_template("upload.html")
+
+@views.route("/loginpage")
+def login():
+    return render_template("login.html")
