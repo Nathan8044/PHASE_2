@@ -8,8 +8,9 @@
     
     
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
     
-  <title>NESMO</title>
+  <title>NESMOS</title>
   <link rel="icon" href="NETMO_LOGO.png">
   
 
@@ -69,11 +70,22 @@
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
-          
+          <div class="d-flex px-2">
+            <a class="btn btn-secondary" href="{{ url_for('views.login')}}" role="button">Login</a>
+          </div>
+  
+  
+        
+        
+  
+   
           
   
         </div>
       </div>
+    
+  
+      
     </nav>
     <!--This is where navbar function ends.-->
       </header>
@@ -103,7 +115,7 @@
       <input type="text" class="form-control" id="port" name="port" aria-describedby="port"
         placeholder="Enter the Port Info (xx/xx/xx)">
     </div>
-       <div class="form-group">
+    <div class="form-group">
       <label for="selectBox">Select an Access or Trunk Port:</label>
       <select class="form-select" id="selectBox" name="selectBox" required>
         <option value="">Choose an option</option>
@@ -113,26 +125,28 @@
     </div>
 
     <div id="trunk_port" class="form-group d-none">
-      <label for="trunk_port">Enter All trunkated VLAN numbers seperated by commas(i.e. 100,200,300,...,XXX):</label>
-      <input type="text" class="form-control" id="trunk_port" name="trunk_port">
+      <label for="trunk_port">VLANS</label>
+      <input type="text" class="form-control" id="trunk_port" name="trunk_port" placeholder="Enter All trunkated VLAN numbers seperated by commas(i.e. 100,200,300,...,XXX):">
     </div>
     <div id="access_port" class="form-group d-none">
-      <label for="access_port">Enter VLAN Number:</label>
-      <input type="text" class="form-control" id="access_port" name="access_port">
+      <label for="access_port">VLAN</label>
+      <input type="text" class="form-control" id="access_port" name="access_port" placeholder="Enter VLAN Number:">
     </div>
     <div class="form-group">
       <label for="description">Description</label>
       <input type="text" class="form-control" id="description" name="description" aria-describedby="description"
         placeholder="Enter a Description">
     </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Confirm this is the right configuration you would like to be
-        sent</label>
-    </div>
-   
+    
+
+
+  </div>
+
+    
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-    <button type="submit" class="btn btn-primary">Send Config</button>
+    <div class="py-4 container-sm">
+      <button type="submit" class="btn btn-primary" id="submitButton">Send Config</button>
+    </div>
   </form>
 
   </div>
