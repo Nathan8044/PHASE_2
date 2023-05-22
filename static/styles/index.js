@@ -28,3 +28,9 @@ selectBox.addEventListener('change', function() {
     }
   });
 //  end of interface_changes access and trunk port options 
+
+
+// start of interface_changes speed policy options
+
+
+//end of interface_changes speed policy options
