@@ -9,74 +9,85 @@
     
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
     
-  <title>NESMO</title>
+  <title>NESMOS</title>
   <link rel="icon" href="NETMO_LOGO.png">
   
 
 </head>
 
 <body>
-    <header>
-        <!--This is the navbar function.-->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url_for('views.home')}}">NESMOS</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Interface Configuration
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ url_for('views.interface_changes_form')}}">Interface Changes</a></li>
-                    <li><a class="dropdown-item" href="{{ url_for('views.interface_security')}}">Interface Security</a></li>
-                    
-                    
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Global Configuration
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ url_for('views.routing')}}">Routing Commands</a></li>
-                    <li><a class="dropdown-item" href="{{ url_for('views.global_commands')}}">Global Commands</a></li>
-                    
-                   
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Monitoring
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ url_for('views.show_commands')}}">Show Commands</a></li>
-                    <li><a class="dropdown-item" href="{{ url_for('views.priv_commands')}}">Privileged Executive Commands</a></li>
-                    
-                   
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{{ url_for('views.upload')}}">Upload</a>
-                </li>
-               
-        
+  <header>
+    <!--This is the navbar function.-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('views.home')}}">NESMOS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Interface Configuration
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('views.interface_changes_form')}}">Interface Changes</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('views.interface_security')}}">Interface Security</a></li>
+                
+                
               </ul>
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
-              
-              
-      
-            </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Global Configuration
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('views.routing')}}">Routing Commands</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('views.global_commands')}}">Global Commands</a></li>
+                
+               
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Monitoring
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('views.show_commands')}}">Show Commands</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('views.priv_commands')}}">Privileged Executive Commands</a></li>
+                
+               
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ url_for('views.upload')}}">Upload</a>
+            </li>
+           
+    
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          <div class="d-flex px-2">
+            <a class="btn btn-secondary" href="{{ url_for('views.login')}}" role="button">Login</a>
           </div>
-        </nav>
-        <!--This is where navbar function ends.-->
-          </header>
+  
+  
+        
+        
+  
+   
+          
+  
+        </div>
+      </div>
+    
+  
+      
+    </nav>
+    <!--This is where navbar function ends.-->
+      </header>
   <h1>This is the routing page</h1>
 
 
