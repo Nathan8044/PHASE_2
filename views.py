@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 from netmiko import ConnectHandler 
-from flask_wtf import FlaskForm, csrf
+
 
 views = Blueprint(__name__, "views")
 
@@ -14,10 +14,25 @@ def interface_changes_form():
 
 @views.route("/interfacechanges", methods=["POST", "GET"])
 def interface_changes():
+
+    
     if request.method == 'POST':
+
+        data = request.get_json()
+
+        #For the option that the user selected
+        select_option = data['select_option']
+
+        #Trunk VLANs
+        trunk_port_input = data['trunkPortInput']
+
+        #Access VLAN
+        access_port_input = data['accessPortInput']
+
+
         ip = str(request.form["ipaddress"])
         port = str(request.form["port"])
-        vlan_number = str(request.form['vlan'])
+        #vlan_number = str(request.form['vlan'])
         description = str(request.form["description"])
         username = str(request.form["username"])
         password = str(request.form["password"])
@@ -41,22 +56,44 @@ def interface_changes():
 
 
 
-        interface = port
-        vlan = vlan_number
-        description = description
-
-        result = net_connect.send_command('conf t', expect_string=r'SW1\(config\)#')
-
-        config = [
         
-            'int {port}',
-        'switchport mode access',
-        'switchport access vlan {vlan_number}',
-        'description {description}',
-        'exit',
-        'exit'
 
-        ]
+        if select_option == 'Trunk':
+            vlans = trunk_port_input
+            description = description
+            interface = port
+
+            result = net_connect.send_command('conf t', expect_string=r'SW1\(config\)#')
+
+            config = [
+            
+            'int {port}',
+            'switchport turnk encapsulation dot1q'
+            'switchport mode trunk',
+            'switchport trunk allowed vlan {trunk_port_input}',
+            'description {description}',
+            'exit',
+            'exit'
+
+            ]
+        elif select_option == 'Access':
+            vlan = access_port_input
+            description = description
+            interface = port
+
+            result = net_connect.send_command('conf t', expect_string=r'SW1\(config\)#')
+
+            config = [
+            
+            'int {port}',
+            'switchport mode access',
+            'switchport access vlan {access_port_input}',
+            'description {description}',
+            'exit',
+            'exit'
+
+            ]
+        
         
         config_commands = '\n'.join(config).format(port=interface, vlan_number=vlan, description=description)
 
