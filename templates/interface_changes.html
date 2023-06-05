@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
     
   <title>NESMOS</title>
-  <link rel="icon" href="NETMO_LOGO.png">
+  <link rel="icon" href="{{ url_for('static', filename='images/NETMO_png') }}">
   
 
 </head>
@@ -71,7 +71,7 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
           <div class="d-flex px-2">
-            <a class="btn btn-secondary" href="{{ url_for('views.login')}}" role="button">Login</a>
+            <a class="btn btn-secondary" href="{{ url_for('views.login')}}" role="button">Connect</a>
           </div>
   
   
@@ -91,7 +91,7 @@
       </header>
   <!-- This is where the form begins -->
      <form action="/interfacechanges" method="post" name="interface_changes">
-  <div class = 'container-sm'>
+  <div class = 'container-sm new_input'>
     <div class="form-group">
       <label for="ipaddress">IP Address</label>
       <input type="text" class="form-control" id="ipaddress" name="ipaddress" aria-describedby="IP" placeholder="Enter the IP Address">
@@ -137,43 +137,64 @@
       <input type="text" class="form-control" id="description" name="description" aria-describedby="description"
         placeholder="Enter a Description">
     </div>
-    <div class="mt-3">
-      <p>Would you like to add a speed policy?</p>
+    <p class="new_input">Would you like to add a Speed Policy?</p>
+    <div>
+      <input type="radio" name="option" id="yes_speed_policy" value="option1" class="form-check-input">
+      <label for="option1">Yes</label>
     </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-      <label class="form-check-label" for="exampleRadios1">
-        Yes, add a Speed Policy
-      </label>
+    <div>
+      <input type="radio" name="option" id="no_speed_policy" value="option2" class="form-check-input">
+      <label for="option2">No</label>
     </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-      <label class="form-check-label" for="exampleRadios2">
-        No, move on
-      </label>
-    </div>
- 
     
+    <!-- <div id="content1" class="hidden">Content for Option 1</div> -->
 
-
-  </div>
-
+    <div id="content1" class="hidden">
+      <div class="mb-3 container-sm">
+        <label for="speedLimit" class="form-label">Speed Limit:</label>
+        <input type="text" class="form-control" id="speedLimit" name="speedLimit" placeholder="Enter Speed Limit ">
+      </div>
+      <div class="mb-3 container-sm">
+        <label for="policyType" class="form-label">Policy Type:</label>
+        <input type="text" class="form-control" id="policyType" name="policyType" placeholder="Enter Speed Policy I.e. Enter 15 for 15mbps capped speed ">
+      </div>
+    </div>
+    <p class="new_input">Would you like to add an IP Address to this interface?</p>
+    <div>
+      <input type="radio" name="option" id="yes_ip_add" value="option1" class="form-check-input">
+      <label for="option1">Yes</label>
+    </div>
+    <div>
+      <input type="radio" name="option" id="no_ip_add" value="option2" class="form-check-input">
+      <label for="option2">No</label>
+    </div>
     
+    <!-- <div id="content1" class="hidden">Content for Option 1</div> -->
+
+    <div id="content_yes_ip" class="hidden">
+      <div class="mb-3 container-sm">
+        <label for="add_ip" class="form-label">IP Address for Interface</label>
+        <input type="text" class="form-control" id="add_ip" name="add_ip" placeholder="Enter the IP Address I.e. 192.168.11.1">
+      </div>
+      <div class="mb-3 container-sm">
+        <label for="subnet" class="form-label">Subnet Mask</label>
+        <input type="text" class="form-control" id="subnet" name="subnet" placeholder="Enter Subnet Mask I.e. 255.255.255.0 ">
+      </div>
+    </div>
+  
+  
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <div class="py-4 container-sm">
       <button type="submit" class="btn btn-primary" id="submitButton">Send Config</button>
     </div>
-  </form>
-
-  </div>
   <!-- This is where the form ends -->
   
 
 
 
-
-  <script src="{{ url_for('static', filename='styles/bootstrap.bundle.min.js')}}"></script>
   <script src="{{ url_for('static', filename='styles/index.js')}}"></script>
+  <script src="{{ url_for('static', filename='styles/bootstrap.bundle.min.js')}}"></script>
+
 </body>
 
 </html>
