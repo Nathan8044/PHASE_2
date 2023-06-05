@@ -9,8 +9,8 @@ var trunk_port = document.getElementById('trunk_port');
 selectBox.addEventListener('change', function() {
   var selectedOption = selectBox.value;
     if (selectedOption === 'option2') {
-    trunk_port.classList.remove('d-none');
-    }  else {
+      trunk_port.classList.remove('d-none');
+    } else {
       trunk_port.classList.add('d-none');
     }
   });
