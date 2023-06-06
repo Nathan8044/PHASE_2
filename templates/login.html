@@ -74,7 +74,7 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
               </form>
               <div class="d-flex px-2">
-                <a class="btn btn-secondary" href="{{ url_for('views.login')}}" role="button">Login</a>
+                <a class="btn btn-secondary" href="{{ url_for('views.login')}}" role="button">Connect</a>
               </div>
       
       
@@ -103,7 +103,7 @@
             
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                <input type="password" id="form2Example2" class="form-control" />
+                <input type="text" id="form2Example2" class="form-control" />
                 <label class="form-label" for="form2Example2">Username</label>
                 </div>
 
@@ -122,35 +122,14 @@
                     </div>
                 </div>
             
-                <div class="col">
-                    <!-- Simple link -->
-                    <a href="#!">Forgot password?</a>
-                </div>
+     
                 </div>
             
                 <!-- Submit button -->
-                <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+                <button type="button" id="connect_button" class="btn btn-primary btn-block mb-4">Connect</button>
             
                 <!-- Register buttons -->
-                <div class="text-center">
-                <p>Not a member? <a href="#!">Register</a></p>
-                <p>or sign up with:</p>
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fa-brands fa-facebook"></i>
-                </button>
-            
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fa-brands fa-google"></i>
-                </button>
-            
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fa-brands fa-apple"></i>
-                </button>
-            
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fa-brands fa-github"></i>
-                </button>
-                </div>
+                
             </form>
         </div>
 

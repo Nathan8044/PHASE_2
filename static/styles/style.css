@@ -1,0 +1,23 @@
+.hidden {
+
+    display: none;
+
+}
+
+.new_input {
+
+    margin-top: 20px;
+    font-size: 17px;
+
+}
+
+#connect_button {
+
+    margin: 0;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
