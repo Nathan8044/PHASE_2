@@ -59,3 +59,43 @@ option2.addEventListener('click', function() {
   contentYesIp.classList.add('hidden');
 
 });
+
+
+var submit_button = document.getElementById('submitButton') 
+
+submit_button.addEventListener('click', function() {
+
+  var selectedOption = selectBox.value;
+  var trunk_port = document.getElementById('trunk_port').value;
+  var access_port = document.getElementById('access_port').value;
+  var speed_limit = document.getElementById('speedLimit').value;
+  var ip_address = document .getElementById('add_ip').value;
+  var subnet_mask = document.getElementById('subnet').value;
+
+
+  var more_data = {
+    selectedOption: selectedOption,
+    trunk_port: trunk_port,
+    access_port: access_port, 
+    speed_limit: speed_limit,
+    ip_address: ip_address,
+    subnet_mask: subnet_mask
+
+
+
+
+  }
+}); 
+
+
+
+$.ajax({
+
+  type: 'POST',
+  url: '/interface_changes',
+  data: more_data,
+  success: function(data) {
+
+    console.log(data);
+  
+  }});

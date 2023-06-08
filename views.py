@@ -56,43 +56,16 @@ def interface_changes():
 
 
 
-        
+        #For the option that the user selected
 
-        if select_option == 'Trunk':
-            vlans = trunk_port_input
-            description = description
-            interface = port
+        data = request.get_json()
 
-            result = net_connect.send_command('conf t', expect_string=r'SW1\(config\)#')
-
-            config = [
-            
-            'int {port}',
-            'switchport turnk encapsulation dot1q'
-            'switchport mode trunk',
-            'switchport trunk allowed vlan {trunk_port_input}',
-            'description {description}',
-            'exit',
-            'exit'
-
-            ]
-        elif select_option == 'Access':
-            vlan = access_port_input
-            description = description
-            interface = port
-
-            result = net_connect.send_command('conf t', expect_string=r'SW1\(config\)#')
-
-            config = [
-            
-            'int {port}',
-            'switchport mode access',
-            'switchport access vlan {access_port_input}',
-            'description {description}',
-            'exit',
-            'exit'
-
-            ]
+        select_option = data['select_option']
+        trunk_port_input = data['trunk_port']
+        access_port_input = data['access_port']
+        speed_limit_input = data['speed_limit']
+        ip_address_input = data['ip_address']
+        subnet_mask_input = data['subnet_mask']
         
         
         config_commands = '\n'.join(config).format(port=interface, vlan_number=vlan, description=description)
