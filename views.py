@@ -17,9 +17,9 @@ def interface_changes():
 
     
     if request.method == 'POST':
-
+        #Get data from ajax request
         data = request.get_json()
-
+        #index data from the ajax request 
         select_option = data['select_option']
         trunk_port_input = data['trunk_port']
         access_port_input = data['access_port']
@@ -27,6 +27,8 @@ def interface_changes():
         ip_address_input = data['ip_address']
         subnet_mask_input = data['subnet_mask']
 
+        #get the data below from the HTTP post request in the form. This is not from the ajax request
+        #converts the normal form data in a a dictionary for SSH connection
         ip = str(request.form["ipaddress"])
         port = str(request.form["port"])
         description = str(request.form["description"])
@@ -43,24 +45,29 @@ def interface_changes():
             'global_delay_factor': 2
         }
 
+        #SSH connection to the device using Netmiko and the dictionary above 
         net_connect = ConnectHandler(**device)
 
         net_connect.enable()
-
+        #Enters a show run command 
         output = net_connect.send_command('show run',expect_string=r'SW1#')
-
+        #takes the ajax data and puts it into a variable
         interface = port
         port_type = select_option
+        #the if and else statement used for which vlan input to use One VLAN or many 
         if port_type == "Access":
             vlan = access_port_input
 
         else: 
             vlan = trunk_port_input
 
+        #the rest of the variables are converted using variables from the ajax request
         speedlimit = speed_limit_input
         ipAddress = ip_address_input
         subnetMask = subnet_mask_input
         description = description
+        #the nested if and else statements used to differentiate between access and trunk ports
+        #This is because the commands are different 
         if port_type == 'Access':
 
             config = {
@@ -87,6 +94,7 @@ def interface_changes():
                 "exit",
                 "exit"
             }
+        #formats and send the commands to the device
         config_commands = '\n'.join(config).format(port=interface, port_type=port_type, vlan=vlan, ipAddress=ipAddress, subnetMask=subnetMask description=description)
 
             
@@ -95,7 +103,7 @@ def interface_changes():
         output = net_connect.send_config_set(config_commands,read_timeout=10000)
 
 
-            
+        #gets the show run comand
         result = net_connect.send_command('sh ip int brief',read_timeout=120)
 
         
