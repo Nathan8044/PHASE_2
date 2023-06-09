@@ -73,6 +73,7 @@ submit_button.addEventListener('click', function() {
   var subnet_mask = document.getElementById('subnet').value;
 
 
+
   var more_data = {
     selectedOption: selectedOption,
     trunk_port: trunk_port,
