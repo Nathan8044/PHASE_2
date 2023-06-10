@@ -61,42 +61,38 @@ option2.addEventListener('click', function() {
 });
 
 
-var submit_button = document.getElementById('submitButton') 
+function sendconfig() {
+  var ipaddress  = document.getElementById('ipaddress');
+  var username = document.getElementById('username');
+  var password = document.getElementById('password');
+  var enable = document.getElementById('secret');
+  var port = document.getElementById('port');
+  var selectedOption= document.getElementById('selectBox');
+  var VLAN = document.getElementById('trunk_port');
+  var VLANS = document.getElementById('access_port');
+  var description = document.getElementById('description');
+  var speedLimit = document.getElemenetById('speedLimit');
+  var ipAdd = document.getElementById('add_ip');
+  var subnetMask = document.getElementById('subnet');
 
-submit_button.addEventListener('click', function() {
-
-  var selectedOption = selectBox.value;
-  var trunk_port = document.getElementById('trunk_port').value;
-  var access_port = document.getElementById('access_port').value;
-  var speed_limit = document.getElementById('speedLimit').value;
-  var ip_address = document .getElementById('add_ip').value;
-  var subnet_mask = document.getElementById('subnet').value;
-
-
-
-  var more_data = {
-    selectedOption: selectedOption,
-    trunk_port: trunk_port,
-    access_port: access_port, 
-    speed_limit: speed_limit,
-    ip_address: ip_address,
-    subnet_mask: subnet_mask
-
-
-
-
+  var config_file = {
+    ipaddress: ipaddress.value,
+    username: username.value,
+    password: password.value,
+    enable: enable.value,
+    port: port.value,
+    selectedOption: selectedOption.value,
+    VLAN: VLAN.value,
+    VLANS: VLANS.value,
+    description: description.value,
+    speedLimit: speedLimit.value,
+    ipAdd: ipAdd.value,
+    subnetMask: subnetMask.value
   }
-}); 
+
+  console.log(config_file)
 
 
 
-$.ajax({
+}
 
-  type: 'POST',
-  url: '/interface_changes',
-  data: more_data,
-  success: function(data) {
-
-    console.log(data);
-  
-  }});
