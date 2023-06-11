@@ -3,7 +3,7 @@
 
 // start of interface_changes access and trunk port options
 var selectBox = document.getElementById('selectBox');
-var trunk_port = document.getElementById('trunk_port');
+var trunk_port = document.getElementById('trunk_port_div');
 
 //// -- for option 2 trunk port 
 selectBox.addEventListener('change', function() {
@@ -17,7 +17,7 @@ selectBox.addEventListener('change', function() {
 
 //// -- for option 1 access port 
 var selectBox = document.getElementById('selectBox');
-var access_port = document.getElementById('access_port');
+var access_port = document.getElementById('access_port_div');
 
 selectBox.addEventListener('change', function() {
   var selectedOption = selectBox.value;
@@ -60,39 +60,61 @@ option2.addEventListener('click', function() {
 
 });
 
-
 function sendconfig() {
-  var ipaddress  = document.getElementById('ipaddress');
+  var csrfToken = document.querySelector('input[name="csrf_token"]').value;
+  console.log(csrfToken)
+
+  var ipaddress = document.getElementById('ipaddress');
   var username = document.getElementById('username');
   var password = document.getElementById('password');
-  var enable = document.getElementById('secret');
+  var secret = document.getElementById('secret');
   var port = document.getElementById('port');
-  var selectedOption= document.getElementById('selectBox');
-  var VLAN = document.getElementById('trunk_port');
-  var VLANS = document.getElementById('access_port');
+  var selectedOption = document.getElementById('selectBox');
+  var VLANS = document.getElementById('trunk_port');
+  var VLAN = document.getElementById('access_port');
   var description = document.getElementById('description');
-  var speedLimit = document.getElemenetById('speedLimit');
-  var ipAdd = document.getElementById('add_ip');
-  var subnetMask = document.getElementById('subnet');
+  var speedlimit = document.getElementById('speedLimit');
+  var ip_add = document.getElementById('add_ip');
+  var subnet = document.getElementById('subnet');
 
   var config_file = {
     ipaddress: ipaddress.value,
     username: username.value,
     password: password.value,
-    enable: enable.value,
+    secret: secret.value,
     port: port.value,
     selectedOption: selectedOption.value,
-    VLAN: VLAN.value,
     VLANS: VLANS.value,
+    VLAN: VLAN.value,
     description: description.value,
-    speedLimit: speedLimit.value,
-    ipAdd: ipAdd.value,
-    subnetMask: subnetMask.value
+    speedlimit: speedlimit.value,
+    ip_add: ip_add.value,
+    subnet: subnet.value
+
+
   }
 
-  console.log(config_file)
+  console.log(config_file);
+
+  fetch(`${window.origin}/interfacechanges/entry`,{
+    method: 'POST',
+    credentials: 'include',
+    body: JSON.stringify(config_file),
+    cache: "no-cache",
+    headers: new Headers({
+      "content-type": "application/json",
+      'X-CSRFToken': csrfToken,
+
+    })
 
 
 
+  })
 }
+
+
+
+
+
+
 

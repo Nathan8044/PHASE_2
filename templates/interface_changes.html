@@ -12,6 +12,7 @@
     
   <title>NESMOS</title>
   <link rel="icon" href="{{ url_for('static', filename='images/NETMO_png') }}">
+  <script src="{{url_for('static', filename='styles/code.jquery.com_jquery-3.7.0.min.js')}}"></script>
   
 
 </head>
@@ -32,7 +33,7 @@
                 Interface Configuration
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ url_for('views.interface_changes_form')}}">Interface Changes</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('views.interfacechanges')}}">Interface Changes</a></li>
                 <li><a class="dropdown-item" href="{{ url_for('views.interface_security')}}">Interface Security</a></li>
                 
                 
@@ -90,7 +91,7 @@
     <!--This is where navbar function ends.-->
       </header>
   <!-- This is where the form begins -->
-     <form action="/interfacechanges" method="post" name="interface_changes">
+
   <div class = 'container-sm new_input'>
     <div class="form-group">
       <label for="ipaddress">IP Address</label>
@@ -124,12 +125,12 @@
       </select>
     </div>
 
-    <div id="trunk_port" class="form-group d-none">
-      <label for="trunk_port">VLANS</label>
+    <div id="trunk_port_div" class="form-group d-none">
+      <label for="trunk_port_input">VLANS</label>
       <input type="text" class="form-control" id="trunk_port" name="trunk_port" placeholder="Enter All trunkated VLAN numbers seperated by commas(i.e. 100,200,300,...,XXX):">
     </div>
-    <div id="access_port" class="form-group d-none">
-      <label for="access_port">VLAN</label>
+    <div id="access_port_div" class="form-group d-none">
+      <label for="access_port_input">VLAN</label>
       <input type="text" class="form-control" id="access_port" name="access_port" placeholder="Enter VLAN Number:">
     </div>
     <div class="form-group">
@@ -177,18 +178,22 @@
         <input type="text" class="form-control" id="subnet" name="subnet" placeholder="Enter Subnet Mask I.e. 255.255.255.0 ">
       </div>
     </div>
-  
+    <div class="py-4 container-sm">
+      <button class="btn btn-primary" id="submitButton" onclick="sendconfig()">Send Config</button>
+    </div>
+
+
   
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-    <div class="py-4 container-sm">
-      <button type="submit" class="btn btn-primary" id="submitButton" onclick="sendconfig();">Send Config</button>
-    </div>
+
+
   <!-- This is where the form ends -->
   
 
 
 
   <script src="{{ url_for('static', filename='styles/index.js')}}"></script>
+
   <script src="{{ url_for('static', filename='styles/bootstrap.bundle.min.js')}}"></script>
 
 </body>

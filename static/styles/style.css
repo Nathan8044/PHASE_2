@@ -21,3 +21,8 @@
     transform: translate(-50%, -50%);
 
 }
+
+#slideshow_container {
+
+    padding: 20px;
+}
