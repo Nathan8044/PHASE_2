@@ -1,0 +1,91 @@
+Example Config: 
+
+
+int g0/3 
+ip add "" subnet ""
+switchport mode access 
+switchport access vlan 100 
+
+description test to see various inputs 
+
+Other possible config logic for interface changes: 
+
+        if port_type == access_config and config_dict['ip_add'] != "":  
+
+            config = {
+
+                "int {port}",
+                "switchport mode {port_type}",
+                "switchport {port_type} vlan {vlan}",
+                "ip add {ipAddress} {subnetMask}",
+                "description {description}",
+                "no shut",
+                "exit",
+                "exit"
+
+            }
+        elif port_type == trunk_config and config_dict['ip_add'] != "":
+
+            config = {
+
+                "int {port}",
+                "switchport trunk encapsulation dot1q",
+                "switchport mode {port_type}",
+                "switchport {port_type} allowed vlan {vlan}",
+                "ip add {ipAddress} {subnetMask}",
+                "description {description}",
+                "no shut",
+                "exit",
+                "exit"
+            }
+        elif port_type == access_config and config_dict['ip_add'] == "":
+            config = {
+
+                "int {port}",
+                "switchport mode {port_type}",
+                "switchport {port_type} vlan {vlan}",
+                "description {description}",
+                "no shut",
+                "exit",
+                "exit"
+
+            }
+        
+        elif port_type == trunk_config and config_dict['ip_add'] == "":
+            config = {
+
+                "int {port}",
+                "switchport trunk encapsulation dot1q",
+                "switchport mode {port_type}",
+                "switchport {port_type} allowed vlan {vlan}",
+                "description {description}",
+                "no shut",
+                "exit",
+                "exit"
+            }
+        elif VLAN == "" and config_dict['ip_add'] != "":
+            config = {
+
+                "int {port}",
+                "ip add {ipAddress} {subnetMask}",
+                "description {description}",
+                "no shut", 
+                "exit",
+                "exit"
+
+            }           
+
+        elif VLANS == "" and config_dict['ip_add'] != "":
+            config = {
+
+                "int {port}",
+                "description {description}",
+                "ip add {ipAddress} {subnetMask}",
+                "no shut",
+                "exit",
+                "exit"
+            }
+        else: 
+
+            return "An error as occured"
+

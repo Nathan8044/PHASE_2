@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, jsonify, make_response
 views = Blueprint("views", __name__)
 from flask_wtf import FlaskForm, csrf
+from Netmiko import ConnectHandler
 
 @views.route("/")
 def home():
@@ -16,109 +17,101 @@ def interfacechanges():
 @views.route("/interfacechanges/entry", methods=['POST'])
 
 def create_entry():
-    req = request.get_json()
-    print(req)
+
+    if request.method == 'POST':
+        #Get data from Fetch api
+        config_dict = request.get_json()
+        print(config_dict)
+        #All data will be coming from the fetch api post request
+
+        ip = config_dict['ipaddress']
+        port = config_dict['port']
+        username = config_dict['username']
+        password = config_dict['password']
+        enable_password = config_dict['enable']
+        ip_add = config_dict['ip_add']
+        subnetMask = config_dict['subnetMask']
+        speedLimit = config_dict['speedLimit']
+        VLAN = config_dict['VLAN']
+        VLANS = config_dict['VLANS']
+        description = config_dict['description']
+        port_type = config_dict['selectedOption']
 
 
-    # return "thanks"
-    # if request.method == 'POST':
-    #     #Get data from ajax request
-    #     data = request.get_json()
-    #     #index data from the ajax request 
-    #     select_option = data['select_option']
-    #     trunk_port_input = data['trunk_port']
-    #     access_port_input = data['access_port']
-    #     speed_limit_input = data['speed_limit']
-    #     ip_address_input = data['ip_address']
-    #     subnet_mask_input = data['subnet_mask']
+        device = {
+            'device_type': 'cisco_ios',
+            'ip': ip,
+            'username': username,
+            'password': password,
+            'secret': enable_password,
+            'verbose': True,
+            'global_delay_factor': 2
+        }
 
-    #     #get the data below from the HTTP post request in the form. This is not from the ajax request
-    #     #converts the normal form data in a a dictionary for SSH connection
-    #     ip = str(request.form["ipaddress"])
-    #     port = str(request.form["port"])
-    #     description = str(request.form["description"])
-    #     username = str(request.form["username"])
-    #     password = str(request.form["password"])
-    #     enable_password = str(request.form["secret"])
-    #     device = {
-    #         'device_type': 'cisco_ios',
-    #         'ip': ip,
-    #         'username': username,
-    #         'password': password,
-    #         'secret': enable_password,
-    #         'verbose': True,
-    #         'global_delay_factor': 2
-    #     }
+        #SSH connection to the device using Netmiko and the device dictionary above 
+        net_connect = ConnectHandler(**device)
 
-    #     #SSH connection to the device using Netmiko and the dictionary above 
-    #     net_connect = ConnectHandler(**device)
+        net_connect.enable()
+        #Enters a show run command 
+        output = net_connect.send_command('show run',expect_string=r'SW1#')
+        
+        #takes the fetch port_type data and puts it into a variable
+        trunk_config = 'option2'
+        access_config = 'option1'
 
-    #     net_connect.enable()
-    #     #Enters a show run command 
-    #     output = net_connect.send_command('show run',expect_string=r'SW1#')
-    #     #takes the ajax data and puts it into a variable
-    #     interface = port
-    #     port_type = select_option
-    #     #the if and else statement used for which vlan input to use One VLAN or many 
-    #     if port_type == "Access":
-    #         vlan = access_port_input
+        #the if and else statement used for which vlan input to use One VLAN or many 
+ 
+        if port_type == access_config:
+            config = [
 
-    #     else: 
-    #         vlan = trunk_port_input
+                "int {port}",
+                "switchport mode {port_type}",
+                "switchport {port_type} vlan {vlan}",
+                "ip add {ipAddress} {subnetMask}",
+                "description {description}",
+                "no shut",
+                "exit",
+                "exit"
 
-    #     #the rest of the variables are converted using variables from the ajax request
-    #     speedlimit = speed_limit_input
-    #     ipAddress = ip_address_input
-    #     subnetMask = subnet_mask_input
-    #     description = description
-    #     #the nested if and else statements used to differentiate between access and trunk ports
-    #     #This is because the commands are different 
-    #     if port_type == 'Access':
+            ]
+            config_commands = '\n'.join(config).format(port=port, port_type=port_type, vlan=VLAN, ipAddress=ip_add, subnetMask=subnetMask, description=description)
+        elif port_type == trunk_config:
+            config = [
 
-    #         config = {
+                "int {port}",
+                "switchport trunk encapsulation dot1q",
+                "switchport mode {port_type}",
+                "switchport {port_type} allowed vlan {vlans}",
+                "ip add {ipAddress} {subnetMask}",
+                "description {description}",
+                "no shut",
+                "exit",
+                "exit"
+            ]
+            config_commands = '\n'.join(config).format(port=port, port_type=port_type, vlans=VLANS, ipAddress=ip_add, subnetMask=subnetMask, description=description)
+            
 
-    #             "int {port}",
-    #             "switchport mode {port_type}",
-    #             "switchport {port_type} vlan {vlan}",
-    #             "ip add {ipAddress} {subnetMask}",
-    #             "description {description}",
-    #             "exit",
-    #             "exit"
-
-    #         }
-    #     else: 
-
-    #         config = {
-
-    #             "int {port}",
-    #             "switchport trunk encapsulation dot1q",
-    #             "switchport mode {port_type}",
-    #             "switchport {port_type} allowed vlan {vlan}",
-    #             "ip add {ipAddress} {subnetMask}",
-    #             "description {description}",
-    #             "exit",
-    #             "exit"
-    #         }
-    #     #formats and send the commands to the device
-    #     config_commands = '\n'.join(config).format(port=interface, port_type=port_type, vlan=vlan, ipAddress=ipAddress, subnetMask=subnetMask description=description)
+        
+        #formats and send the commands to the device
+        
 
             
 
 
-    #     output = net_connect.send_config_set(config_commands,read_timeout=10000)
+        output = net_connect.send_config_set(config_commands,read_timeout=10000)
 
 
-    #     #gets the show run comand
-    #     result = net_connect.send_command('sh ip int brief',read_timeout=120)
+        #gets the show run comand
+        result = net_connect.send_command('sh ip int brief',read_timeout=120)
 
         
 
 
-    #     return render_template("interfaces_changes.html", result=result)
+        return render_template("interfaces_changes.html", result=result)
     
 
-    # else:
-    #      return render_template("interfaces_changes.html")
+    else:
+         return render_template("interfaces_changes.html")
 
     
        
