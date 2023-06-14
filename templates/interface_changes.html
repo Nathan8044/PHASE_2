@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
     
   <title>NESMOS</title>
-  <link rel="icon" href="{{ url_for('static', filename='images/NETMO_png') }}">
-
+  <link rel="icon" href="{{ url_for('static', filename='images/NETMO_LOGO.png') }}">
+ 
   
 
 </head>
@@ -33,7 +33,7 @@
                 Interface Configuration
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ url_for('views.interfacechanges')}}">Interface Changes</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('interfacechanges.interfacechanges')}}">Interface Changes</a></li>
                 <li><a class="dropdown-item" href="{{ url_for('views.interface_security')}}">Interface Security</a></li>
                 
                 
