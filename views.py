@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, jsonify, make_response
 views = Blueprint("views", __name__)
 from flask_wtf import FlaskForm, csrf
-from Netmiko import ConnectHandler
+from netmiko import ConnectHandler
 
 @views.route("/")
 def home():
@@ -28,10 +28,10 @@ def create_entry():
         port = config_dict['port']
         username = config_dict['username']
         password = config_dict['password']
-        enable_password = config_dict['enable']
+        enable_password = config_dict['secret']
         ip_add = config_dict['ip_add']
-        subnetMask = config_dict['subnetMask']
-        speedLimit = config_dict['speedLimit']
+        subnetMask = config_dict['subnet']
+        speedLimit = config_dict['speedlimit']
         VLAN = config_dict['VLAN']
         VLANS = config_dict['VLANS']
         description = config_dict['description']
@@ -53,7 +53,7 @@ def create_entry():
 
         net_connect.enable()
         #Enters a show run command 
-        output = net_connect.send_command('show run',expect_string=r'SW1#')
+        # output = net_connect.send_command('show run',expect_string=r'SW1#')
         
         #takes the fetch port_type data and puts it into a variable
         trunk_config = 'option2'
