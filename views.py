@@ -7,9 +7,6 @@ from netmiko import ConnectHandler
 def home():
     return render_template("index.html")
 
-@views.route("/interfacesecurity")
-def interface_security():
-    return render_template("interface_security.html")
 
 @views.route("/routing")
 def routing():

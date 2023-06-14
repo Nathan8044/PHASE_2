@@ -1,4 +1,3 @@
-
 from flask import Blueprint, render_template, request, redirect, jsonify, make_response
 from flask_wtf import FlaskForm, csrf
 from netmiko import ConnectHandler
@@ -16,7 +15,7 @@ def interfacechanges():
     return render_template("interface_changes.html")
 
 
-@interfacechanges_blueprint.route("/interfacechanges/entry", methods=['POST'])
+@interfacechanges_blueprint.route("/interfacechanges/config", methods=['POST'])
 
 def create_entry():
 

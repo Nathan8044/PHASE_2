@@ -9,9 +9,10 @@
     
     
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
     
   <title>NESMOS</title>
-  <link rel="icon" href="NETMO_LOGO.png">
+  <link rel="icon" href="{{ url_for('static', filename='images/NETMO_LOGO.png') }}">
   
 
 </head>
@@ -32,8 +33,8 @@
                 Interface Configuration
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ url_for('views.interfacechanges')}}">Interface Changes</a></li>
-                <li><a class="dropdown-item" href="{{ url_for('views.interface_security')}}">Interface Security</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('interfacechanges.interfacechanges')}}">Interface Changes</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('interfacesecurity.interfacesecurity')}}">Interface Security</a></li>
                 
                 
               </ul>
@@ -73,14 +74,7 @@
           <div class="d-flex px-2">
             <a class="btn btn-secondary" href="{{ url_for('views.login')}}" role="button">Login</a>
           </div>
-  
-  
-        
-        
-  
-   
-          
-  
+
         </div>
       </div>
     
@@ -89,12 +83,60 @@
     </nav>
     <!--This is where navbar function ends.-->
       </header>
-  <h1>This is the interface security page</h1>
+      <!--start of the form--> 
+      <div class = 'container-sm new_input'>
+        <div class="form-group">
+          <label for="ipaddress">IP Address</label>
+          <input type="text" class="form-control" id="ipaddress" name="ipaddress" aria-describedby="IP" placeholder="Enter the IP Address">
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+          <label for="password1">Password</label>
+          <input type="password" class="form-control" id="password" name="password" aria-describedby="password"
+            placeholder="Enter your Password">
+        </div>
+        <div class="form-group">
+          <label for="secret">Enable Secret</label>
+          <input type="password" class="form-control" id="secret" name="secret" aria-describedby="secret"
+            placeholder="Enter your Enable Secret Password">
+        </div>
+        <div class="form-group">
+          <label for="port">Port Info</label>
+          <input type="text" class="form-control" id="port" name="port" aria-describedby="port"
+            placeholder="Enter the Port Info (xx/xx/xx)">
+        </div>
+        <p>Configure Static Port Security</p>
+        <div class="form-group">
+          <label for="max_devices1">Maximum number of devices:</label>
+          <input type="text" class="form-control" id="max_devices" name="max_devices" aria-describedby="max_devices"
+            placeholder="Enter the maximum number of devices that can connect to this port">
+        </div>
+        <div class="form-group">
+          <label for="selectBox">Select a Port Security Violation:</label>
+          <select class="form-select" id="violation" name="violation" required>
+            <option value="">Choose an option</option>
+            <option value="shutdown">Shutdown</option>
+            <option value="restrict">Restrict</option>
+            <option value="restrict">Protect</option>
+          </select>
+        </div>
+        <div class="py-4 container-sm">
+          <button class="btn btn-primary" id="submitButton" onclick="interface_security_config()">Send Config</button>
+        </div>
+    
+    
+      
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      </div>
 
+      <script src="{{ url_for('static', filename='styles/index.js')}}"></script>
 
-
-
-  <script src="{{ url_for('static', filename='styles/bootstrap.bundle.min.js')}}"></script>
+      <script src="{{ url_for('static', filename='styles/interfacesecurity.js')}}"></script>
+    
+      <script src="{{ url_for('static', filename='styles/bootstrap.bundle.min.js')}}"></script>
 </body>
 
 </html>
