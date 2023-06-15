@@ -8,6 +8,7 @@
     
     
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
     
   <title>NESMOS</title>
   <link rel="icon" href="NETMO_LOGO.png">
@@ -72,27 +73,29 @@
           <div class="d-flex px-2">
             <a class="btn btn-secondary" href="{{ url_for('views.login')}}" role="button">Login</a>
           </div>
-  
-  
-        
-        
-  
-   
-          
-  
         </div>
       </div>
-    
-  
-      
+
     </nav>
     <!--This is where navbar function ends.-->
+
+
       </header>
+
+    <!-- This is where the input forms begin -->
+      <div class="container-sm new_input">
+
+
+
+
+      </div>
   <h1>This is the routing page</h1>
 
 
 
+  <script src="{{ url_for('static', filename='styles/index.js')}}"></script>
 
+  <script src="{{ url_for('static', filename='styles/routing.js')}}"></script>
   <script src="{{ url_for('static', filename='styles/bootstrap.bundle.min.js')}}"></script>
 </body>
 

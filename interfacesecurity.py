@@ -5,12 +5,11 @@ from netmiko import ConnectHandler
 
 interfacesecurity_blueprint = Blueprint(__name__, "interfacesecurity")
 
-@interfacesecurity_blueprint("/interfacesecurity", methods=['POST', 'GET'])
+@interfacesecurity_blueprint.route("/interfacesecurity", methods=['POST', 'GET'])
 def interfacesecurity():
     return render_template("interface_security.html")
 
-@interfacesecurity_blueprint("/interfacesecurity/config", methods=['POST', 'GET'])
-
+@interfacesecurity_blueprint.route("/interfacesecurity/config", methods=['POST', 'GET'])
 def config_entry():
     if request.method == 'POST':
         #Get data from Fetch api
