@@ -7,11 +7,6 @@ from netmiko import ConnectHandler
 def home():
     return render_template("index.html")
 
-
-@views.route("/routing")
-def routing():
-    return render_template("routing.html")
-
 @views.route("/globalcommands")
 def global_commands():
     return render_template("global_commands.html")
