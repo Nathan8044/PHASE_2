@@ -18,7 +18,6 @@ function interface_security_config() {
       port: port.value,
       max_devices: max_devices.value,
       violation: violation.value,
-  
     }
     console.log(config_file);
     fetch(`${window.origin}/interfacesecurity/interfacesecurity/config`,{

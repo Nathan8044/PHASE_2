@@ -54,7 +54,7 @@ def create_entry():
 
         net_connect.enable()
         #Enters a show run command 
-        output = net_connect.send_command('show run',expect_string=r'SW1#')
+
         
         #takes the fetch port_type data and puts it into a variable
         trunk_config = 'option2'
