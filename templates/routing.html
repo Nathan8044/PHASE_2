@@ -8,7 +8,6 @@
     
     
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
     
   <title>NESMOS</title>
   <link rel="icon" href="NETMO_LOGO.png">
@@ -72,28 +71,123 @@
           </form>
           <div class="d-flex px-2">
             <a class="btn btn-secondary" href="{{ url_for('views.login')}}" role="button">Login</a>
-          </div>
+          </div>  
         </div>
       </div>
-
     </nav>
     <!--This is where navbar function ends.-->
-
-
       </header>
 
-    <!-- This is where the input forms begin -->
-      <div class="container-sm new_input">
-
-
+      <div class = 'container-sm new_input'>
+        <div class="form-group">
+          <label for="ipaddress">IP Address</label>
+          <input type="text" class="form-control" id="ipaddress" name="ipaddress" aria-describedby="IP" placeholder="Enter the IP Address">
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+          <label for="password1">Password</label>
+          <input type="password" class="form-control" id="password" name="password" aria-describedby="password"
+            placeholder="Enter your Password">
+        </div>
+        <div class="form-group">
+          <label for="secret">Enable Secret</label>
+          <input type="password" class="form-control" id="secret" name="secret" aria-describedby="secret"
+            placeholder="Enter your Enable Secret Password">
+        </div>
+        <div class="form-group">
+          <label for="port">Port Info</label>
+          <input type="text" class="form-control" id="port" name="port" aria-describedby="port"
+            placeholder="Enter the Port Info (xx/xx/xx)">
+        </div>
+        <!--Start of the form group to select which routing protocol-->
+        <div class="form-group">
+          <label for="selectBox">Choose your routing protocol:</label>
+          <select class="form-select" id="selectBox" name="selectBox" required>
+            <option value="">Choose an option</option>
+            <option value="next_hop">Next Hop Route</option>
+            <option value="exit_interface">Exit Interface</option>
+            <option value="fully_specified">Fully Specified Route</option>
+            <option value="rip">OSPF</option>
+            <option value="eigrp">EIGRP</option>
+            <option value="rip">RIP</option>
+          </select>
+        </div>
+        <!--Start of the next hop section-->
+        <div id="next_hop_input" class="form-group d-none">
+          <div class="form-group">
+            <label for="destination_network_for">Destination Network</label>
+            <input type="text" class="form-control" id="destination_network1" name="destination_network" aria-describedby="destination_network" placeholder="Enter the destination network address">
+          </div>
+          <div class="form-group">
+            <label for="destination_subnet_for">Destination Network Subnet</label>
+            <input type="text" class="form-control" id="destination_subnet1" name="destination_subnet" aria-describedby="destination_subnet" placeholder="Enter the destination network address subnet">
+          </div>
+          <div class="form-group">
+            <label for="next_hop_value_for">Next Hop Address</label>
+            <input type="text" class="form-control" id="next_hop_value1" name="next_hop_value" aria-describedby="next_hope_value" placeholder="Enter the IP Address of the Next Hop">
+          </div>
+        </div>
+        <!--End of the next hop address-->
+        <!--Start of the exit interface-->
+        <div id="exit_interface_input" class="form-group d-none">
+          <div class="form-group">
+            <label for="destination_network">Destination Network</label>
+            <input type="text" class="form-control" id="destination_network2" name="destination_network" aria-describedby="destination_network" placeholder="Enter the destination network address">
+          </div>
+          <div class="form-group">
+            <label for="destination_subnet_for">Destination Network Subnet</label>
+            <input type="text" class="form-control" id="destination_subnet2" name="destination_subnet" aria-describedby="destination_subnet" placeholder="Enter the destination network address subnet">
+          </div>
+          <div class="form-group">
+            <label for="exit_interface_value_for">Exit Interface</label>
+            <input type="text" class="form-control" id="exit_interface_value2" name="exit_interface_value" aria-describedby="exit_interface_value" placeholder="Enter the Exit Interface">
+          </div>
+        </div>
+        <!--End of the exit interface-->
+        <!--start of the fully specified-->
+        <div id="fully_specified_input" class="form-group d-none">
+          <div class="form-group">
+            <label for="destination_network_for">Destination Network</label>
+            <input type="text" class="form-control" id="destination_network3" name="destination_network" aria-describedby="destination_network" placeholder="Enter the destination network address">
+          </div>
+          <div class="form-group">
+            <label for="destination_subnet_for">Destination Network Subnet</label>
+            <input type="text" class="form-control" id="destination_subnet3" name="destination_subnet" aria-describedby="destination_subnet" placeholder="Enter the destination network address subnet">
+          </div>
+          <div class="form-group">
+            <label for="exit_interface_value_for">Exit Interface</label>
+            <input type="text" class="form-control" id="exit_interface_value3" name="exit_interface_value" aria-describedby="exit_interface_value" placeholder="Enter the Exit Interface">
+          </div>
+          <div class="form-group">
+            <label for="next_hop_value_for">Next Hop Address</label>
+            <input type="text" class="form-control" id="next_hop_value3" name="next_hop_value" aria-describedby="next_hope_value" placeholder="Enter the IP Address of the Next Hop">
+          </div>
+          
+        </div>
+        <!--end of the fully specified-->
+        <div id="rip_input" class="form-group d-none">
+          <div class="form-group">
+            <label for="destination_network_for">Destination Network</label>
+            <input type="text" class="form-control" id="destination_network4" name="destination_network" aria-describedby="destination_network" placeholder="Enter the destination network address">
+          </div>
+        </div>
+        
 
 
       </div>
-  <h1>This is the routing page</h1>
 
+      <div class="py-4 container-sm">
+        <button class="btn btn-primary" id="submitButton" onclick="interface_security_config()">Send Config</button>
+      </div>
+  
+  
+    
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    </div>
 
-
-  <script src="{{ url_for('static', filename='styles/index.js')}}"></script>
 
   <script src="{{ url_for('static', filename='styles/routing.js')}}"></script>
   <script src="{{ url_for('static', filename='styles/bootstrap.bundle.min.js')}}"></script>
