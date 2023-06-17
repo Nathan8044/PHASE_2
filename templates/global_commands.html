@@ -8,6 +8,10 @@
     
     
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+
+
+
     
   <title>NESMOS</title>
   <link rel="icon" href="NETMO_LOGO.png">
@@ -72,28 +76,71 @@
           <div class="d-flex px-2">
             <a class="btn btn-secondary" href="{{ url_for('views.login')}}" role="button">Connect</a>
           </div>
-  
-  
-        
-        
-  
-   
-          
-  
         </div>
       </div>
-    
-  
-      
+
     </nav>
     <!--This is where navbar function ends.-->
       </header>
-    <div class"container-sm">
-      <h1>This is the global commands page</h1>
-    </div>
+
+      <div class = 'container-sm new_input'>
+        <div class="form-group">
+          <label for="ipaddress">IP Address</label>
+          <input type="text" class="form-control" id="ipaddress" name="ipaddress" aria-describedby="IP" placeholder="Enter the IP Address">
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+          <label for="password1">Password</label>
+          <input type="password" class="form-control" id="password" name="password" aria-describedby="password"
+            placeholder="Enter your Password">
+        </div>
+        <div class="form-group">
+          <label for="secret">Enable Secret</label>
+          <input type="password" class="form-control" id="secret" name="secret" aria-describedby="secret"
+            placeholder="Enter your Enable Secret Password">
+        </div>
+        <!--Start of the form group to select which routing protocol-->
+        <div class="form-group">
+          <label for="selectBox">Choose your Commands:</label>
+          <select class="form-select" id="selectBox" name="selectBox" required>
+            <option value="">Choose an option</option>
+            <option value="vlan_name">VLAN Creation</option>
+            <option value="ip_default_gateway">IP Defaul-Gateway for Switch</option>
+          </select>
+          <div id="vlan_name_form" class="form-group d-none">
+            <div class="form-group">
+              <label for="vlan_id_for">Enter VLAN ID</label>
+              <input type="text" class="form-control" id="vlan_id" name="vlan_id" aria-describedby="vlan_id" placeholder="Enter VLAN ID">
+            </div>
+            <div class="form-group">
+              <label for="vlan_name_for">Enter VLAN Name</label>
+              <input type="text" class="form-control" id="vlan_name" name="vlan_name" aria-describedby="vlan_name" placeholder="Enter VLAN Name">
+            </div>
+          </div>
+
+          <div id="ip_default_gateway_form" class="form-group d-none">
+            <div class="form-group">
+              <label for="ip_default_gateway_for">Enter Default-Gateway Address</label>
+              <input type="text" class="form-control" id="ip_default_gateway" name="ip_default-gateway" aria-describedby="ip_default_gateway" placeholder="Enter the Default Gateway Address">
+            </div>
+          <div class="py-4 container-sm">
+            <button class="btn btn-primary" id="submitButton" onclick="global_commands_config()">Send Config</button>
+          </div>
+      
+      
+        
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        </div>
 
 
 
+
+
+    <script src="{{ url_for('static', filename='styles/index.js')}}"></script>
+    <script src="{{ url_for('static', filename='styles/global_commands.js')}}"></script>
 
     <script src="{{ url_for('static', filename='styles/bootstrap.bundle.min.js')}}"></script>
 </body>
