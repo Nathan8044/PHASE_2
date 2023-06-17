@@ -9,6 +9,7 @@ interfacesecurity_blueprint = Blueprint(__name__, "interfacesecurity")
 def interfacesecurity():
     return render_template("interface_security.html")
 
+
 @interfacesecurity_blueprint.route("/interfacesecurity/config", methods=['POST', 'GET'])
 def config_entry():
     if request.method == 'POST':

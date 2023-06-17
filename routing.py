@@ -43,7 +43,7 @@ def routing_config():
             next_hop_address = config['next_hop_address']
 
             config = [
-                "ip route {destination_network} {destination_subnet} {next_hop_address} "
+                "ip route {destination_network} {destination_subnet} {next_hop_address}"
             ]
             config_commands = '\n'.join(config).format(destination_network=destination_network, destination_subnet=destination_subnet, next_hop=next_hop_address)
         elif routing_protocol == 'exit_interface':
@@ -89,7 +89,6 @@ def routing_config():
         result = net_connect.send_command('sh ip int brief',read_timeout=120)
 
         return render_template("routing.html", result=result)
-    else: 
+    else:
 
         return render_template("routing.html")
-    

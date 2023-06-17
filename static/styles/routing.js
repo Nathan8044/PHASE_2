@@ -1,4 +1,4 @@
-
+//start of option selector 
 var selectBox = document.getElementById('selectBox');
 var next_hop = document.getElementById('next_hop_input');
 
@@ -45,7 +45,11 @@ selectBox.addEventListener('change', function() {
         rip.classList.add('d-none')
     }
 })
+// end of option selector
 
+
+
+// start of routing config fucntion for submit button
 function routing_config() {
     var csrfToken = document.querySelector('input[name="csrf_token"]').value;
     var ipaddress = document.getElementById('ipaddress');
@@ -127,4 +131,4 @@ function routing_config() {
 
     
 }
-
+// end of routing config function
