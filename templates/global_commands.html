@@ -46,8 +46,8 @@
                 Global Configuration
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ url_for('views.routing')}}">Routing Commands</a></li>
-                <li><a class="dropdown-item" href="{{ url_for('views.global_commands')}}">Global Commands</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('routing.routing')}}">Routing Commands</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('global_commands.global_commands')}}">Global Commands</a></li>
                 
                
               </ul>
@@ -108,7 +108,7 @@
           <select class="form-select" id="selectBox" name="selectBox" required>
             <option value="">Choose an option</option>
             <option value="vlan_name">VLAN Creation</option>
-            <option value="ip_default_gateway">IP Defaul-Gateway for Switch</option>
+            <option value="ip_default_gateway">IP Default-Gateway for Switch</option>
           </select>
           <div id="vlan_name_form" class="form-group d-none">
             <div class="form-group">
@@ -126,13 +126,14 @@
               <label for="ip_default_gateway_for">Enter Default-Gateway Address</label>
               <input type="text" class="form-control" id="ip_default_gateway" name="ip_default-gateway" aria-describedby="ip_default_gateway" placeholder="Enter the Default Gateway Address">
             </div>
-          <div class="py-4 container-sm">
-            <button class="btn btn-primary" id="submitButton" onclick="global_commands_config()">Send Config</button>
-          </div>
+	  </div>
+        <div class="py-4 container-sm">
+          <button class="btn btn-primary" id="submitButton" onclick="global_commands_config()">Send Config</button>
+        </div>
+    
+    
       
-      
-        
-          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         </div>
 
 

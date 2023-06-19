@@ -45,7 +45,7 @@ def routing_config():
             config = [
                 "ip route {destination_network} {destination_subnet} {next_hop_address}"
             ]
-            config_commands = '\n'.join(config).format(destination_network=destination_network, destination_subnet=destination_subnet, next_hop=next_hop_address)
+            config_commands = '\n'.join(config).format(destination_network=destination_network, destination_subnet=destination_subnet, next_hop_address=next_hop_address)
         elif routing_protocol == 'exit_interface':
             destination_network = config_file['destination_network']
             destination_subnet = config_file['destination_subnet']
@@ -74,20 +74,25 @@ def routing_config():
             destination_network = config_file['destination_network']
 
             config =[
-                "router rip"
-                "no auto-summary"
-                "version 2"
-                "network {destination_network}"
+                "router rip",
+                "no auto-summary",
+                "version 2",
+                "network {destination_network}",
             ]
             config_commands = '\n'.join(config).format(destination_network=destination_network)
 
 
-            
-        output = net_connect.send_config_set(config_commands,read_timeout=10000)
-        
+        print(config_commands)
+        output = net_connect.send_config_set(
+            config_commands,
+            cmd_verify=False,  # Disable command verification
+            read_timeout=10000,
+            delay_factor=2
+            )
+        print(output)
         #gets the show run comand
         result = net_connect.send_command('sh ip int brief',read_timeout=120)
-
+        print(result)
         return render_template("routing.html", result=result)
     else:
 

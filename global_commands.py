@@ -39,9 +39,9 @@ def global_commands_config():
 
             vlan_name = config_file['vlan_name']
             vlan_id = config_file['vlan_id']
-
+	   
             config = [
-                "vlan {vlan_id}",
+		"vlan {vlan_id}",
                 "name {vlan_name}"
             ]
 
@@ -56,8 +56,16 @@ def global_commands_config():
             ]
 
             config_commands = '\n'.join(config).format(ip_default_gateway=ip_default_gateway)
-        
-        output = net_connect.send_config_set(config_commands,read_timeout=10000)
+
+
+        output = net_connect.send_config_set(
+            config_commands,
+            cmd_verify=False,  # Disable command verification
+            read_timeout=10000,
+            delay_factor=2
+            )
+
+
         
         #gets the show run comand
         result = net_connect.send_command('sh ip int brief',read_timeout=120)

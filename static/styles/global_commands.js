@@ -3,8 +3,9 @@ var selectedOption = selectBox.value;
 
 
 // checks for which option is clicked 
+var vlan_name_form = document.getElementById('vlan_name_form');
 selectBox.addEventListener('change', function () {
-    var vlan_name_form = document.getElementById('vlvan_name_form');
+    var selectedOption = selectBox.value;
 
     if (selectedOption == 'vlan_name') {
         vlan_name_form.classList.remove('d-none');
@@ -12,9 +13,9 @@ selectBox.addEventListener('change', function () {
         vlan_name_form.classList.add('d-none');
     }
 })
-
+var ip_default_gateway_form = document.getElementById('ip_default_gateway_form');
 selectBox.addEventListener('change', function () {
-    var ip_default_gateway_form = document.getElementById('ip_default_gateway_form');
+    var selectedOption = selectBox.value;
 
     if (selectedOption == 'ip_default_gateway') {
         ip_default_gateway_form.classList.remove('d-none');
@@ -49,7 +50,7 @@ function global_commands_config() {
             secret: secret.value,
             selectedOption: selectedOption,
             vlan_id: vlan_id.value,
-            vlan_name: vlan_name.name
+            vlan_name: vlan_name.value
         }
     } else if (selectedOption == 'ip_default_gateway') {
         var ip_default_gateway = document.getElementById('ip_default_gateway');
@@ -65,7 +66,7 @@ function global_commands_config() {
 
     }
     console.log(config_file)
-    fetch(`${window.origin}/globalcommands/config`, {
+    fetch(`${window.origin}/globalcommands/globalcommands/config`, {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(config_file),

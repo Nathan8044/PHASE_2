@@ -115,7 +115,7 @@ function routing_config() {
         }
     }
     console.log(config_file)
-    fetch(`${window.origin}/routing/config`, {
+    fetch(`${window.origin}/routing/routing/config`, {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(config_file),

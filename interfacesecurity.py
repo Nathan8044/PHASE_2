@@ -49,8 +49,8 @@ def config_entry():
 
                 "int {port}",
                 "switchport mode access",
-                "switchport port-security maximum {max_devicecs}",
-                "switchport port-security violation {violation}}",
+                "switchport port-security maximum {max_devices}",
+                "switchport port-security violation {violation}",
                 "no shut",
                 "exit",
                 "exit"
