@@ -7,10 +7,6 @@ from netmiko import ConnectHandler
 def home():
     return render_template("index.html")
 
-@views.route("/showcommands")
-def show_commands():
-    return render_template("show_commands.html")
-
 @views.route("/privcommands")
 def priv_commands():
     return render_template("priv_commands.html")

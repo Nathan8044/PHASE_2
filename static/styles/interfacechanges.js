@@ -61,7 +61,7 @@ option2.addEventListener('click', function() {
 
 function sendconfig() {
   var csrfToken = document.querySelector('input[name="csrf_token"]').value;
-  console.log(csrfToken)
+
 
   var ipaddress = document.getElementById('ipaddress');
   var username = document.getElementById('username');
@@ -108,6 +108,31 @@ function sendconfig() {
 
 
 
+  })
+  .then(response => response.text())
+  .then(data => {
+    console.log(data);
+    console.log(typeof data);
+    obj = JSON.parse(data);
+    console.log(obj);
+    console.log(typeof obj);
+    var result = obj.result;
+    console.log(result);
+    const words =  result.split(' ');
+    console.log(words);
+
+    let formattedResult = ''; // Empty variable 
+    for (let count = 0; count < words.length; count++ ) {
+      formattedResult += words[i] + ' ';
+      console.log(formattedResult);
+
+      if ((i + 1) % 6 === 0) {
+        formattedResult += '<br>';
+      }
+
+    }
+    console.log(formattedResult);
+    document.getElementById('result').innerHTML = formattedResult; 
   })
 }
 

@@ -53,7 +53,7 @@
                 Monitoring
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ url_for('views.show_commands')}}">Show Commands</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('showcommands.showcommands')}}">Show Commands</a></li>
                 <li><a class="dropdown-item" href="{{ url_for('views.priv_commands')}}">Privileged Executive Commands</a></li>
                 
                
@@ -88,6 +88,53 @@
     </nav>
     <!--This is where navbar function ends.-->
       </header>
+
+
+  <div class="container-sm new_input">
+    <div class="form-group">
+      <label for="ipaddress">IP Address</label>
+      <input type="text" class="form-control" id="ipaddress" name="ipaddress" aria-describedby="IP" placeholder="Enter the IP Address">
+    </div>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+    </div>
+    <div class="form-group">
+      <label for="password1">Password</label>
+      <input type="password" class="form-control" id="password" name="password" aria-describedby="password"
+        placeholder="Enter your Password">
+    </div>
+    <div class="form-group">
+      <label for="secret">Enable Secret</label>
+      <input type="password" class="form-control" id="secret" name="secret" aria-describedby="secret"
+        placeholder="Enter your Enable Secret Password">
+    </div>
+    <div class="form-group">
+      <label for="selectBox">Select a Show Command:</label>
+      <select class="form-select" id="selectBox" name="selectBox" required>
+        <option value="">Choose an option</option>
+        <option value="showrun">Show run</option>
+        <option value="showipintbrief">Show IP Interface Brief</option>
+        <option value="showmacadd">Show MAC Address Table</option>
+        <option value="shiproute">Show IP Route</option>
+        <option value="showvlanbrief">Show VLAN Brief</option>
+        <option value="showinttrunk">Show int Trunk</option>
+      </select>
+    </div>
+
+
+
+
+
+    <div class="py-4 container-sm">
+      <button class="btn btn-primary" id="submitButton" onclick="showcommands_config()">Send Config</button>
+    </div>
+
+
+  
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  </div>
   <h1>This is the show commands page</h1>
 
 

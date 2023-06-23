@@ -82,23 +82,28 @@ function global_commands_config() {
 
     .then(response => response.text())  // Parse the response as text
     .then(data => {
-        console.log(data);
-        console.log(typeof data);
-	obj = JSON.parse(data);
+        // Intitial data is a string
+	    obj = JSON.parse(data);
+        // Converts string to object since it was already 
         console.log(obj)
+        // You can check out the type of the element
         console.log(typeof obj)
+
+        // Index the obj to use it 
         var result = obj.result;
         console.log(result);
+        // Split based on spaces and new lines 
         const words = result.split(' ');
         console.log(words);
+        // Intialize new variable 
         let formattedResult = ''; // Renamed the variable
-        
-        for (let i = 0; i < words.length; i++) {
-          formattedResult += words[i] + ' ';
+        // For loop through the words string to format it to the html 
+        for (let count = 0; count < words.length; i++) {
+          formattedResult += words[count] + ' ';
           console.log(formattedResult);
           
           if ((i + 1) % 6 === 0) {
-            formattedResult += '\n';
+            formattedResult += '<br>';
           }
         }
         

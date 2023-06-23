@@ -34,5 +34,11 @@ function interface_security_config() {
   
   
     })
+
+    // .then(response => response.text())
+    // .then(data => {
+
+      
+    // })
   
   }

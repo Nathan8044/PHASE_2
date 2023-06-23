@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, jsonify, make_response
 from flask_wtf import FlaskForm, csrf
 from netmiko import ConnectHandler
+from flask import jsonify 
+
 
 
 interfacesecurity_blueprint = Blueprint(__name__, "interfacesecurity")
@@ -62,11 +64,11 @@ def config_entry():
 
         output = net_connect.send_config_set(config_commands,read_timeout=10000)
 
-
+        final_command = 'show int ' + port
         #gets the show run comand
-        result = net_connect.send_command('sh ip int brief',read_timeout=120)
+        result = net_connect.send_command(final_command, read_timeout=120)
 
-        return render_template("interfaces_security.html", result=result)
+        return jsonify(result = result)
     else: 
 
         return render_template("interface_security.html")

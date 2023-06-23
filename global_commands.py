@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, jsonify, make_response
 from flask_wtf import FlaskForm, csrf
 from netmiko import ConnectHandler
+from flask import jsonify
 
 
 global_commands_blueprint = Blueprint(__name__, 'globalcommands')
@@ -69,7 +70,8 @@ def global_commands_config():
         
         #gets the show run comand
         result = net_connect.send_command('sh ip int brief',read_timeout=120)
+        print(result)
+        return jsonify(result=result)
 
-        return render_template("global_commands.html", result=result)
     else: 
         return render_template("global_commands")
