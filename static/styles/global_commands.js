@@ -74,9 +74,36 @@ function global_commands_config() {
         headers: new Headers ({
             "content-type": "application/json",
             'X-CSRFToken': csrfToken
-        })   
+        })
+        
+
 
     })
 
+    .then(response => response.text())  // Parse the response as text
+    .then(data => {
+        console.log(data);
+        console.log(typeof data);
+	obj = JSON.parse(data);
+        console.log(obj)
+        console.log(typeof obj)
+        var result = obj.result;
+        console.log(result);
+        const words = result.split(' ');
+        console.log(words);
+        let formattedResult = ''; // Renamed the variable
+        
+        for (let i = 0; i < words.length; i++) {
+          formattedResult += words[i] + ' ';
+          console.log(formattedResult);
+          
+          if ((i + 1) % 6 === 0) {
+            formattedResult += '\n';
+          }
+        }
+        
+        console.log(formattedResult);
+        document.getElementById('result').innerHTML = words;
+      })
 }
 // end of function to send config 
