@@ -55,7 +55,7 @@ def showcommands_config():
         elif selectedOption == 'showinttrunk':
             result = net_connect.send_command('show int trunk',read_timeout=120)
         
-        print(result)
+
         return jsonify(result=result)       
     else: 
         return render_template('show_coammands.html')

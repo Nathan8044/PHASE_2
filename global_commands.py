@@ -70,7 +70,7 @@ def global_commands_config():
         
         #gets the show run comand
         result = net_connect.send_command('sh ip int brief',read_timeout=120)
-        print(result)
+ 
         return jsonify(result=result)
 
     else: 

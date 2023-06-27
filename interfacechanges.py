@@ -23,7 +23,7 @@ def create_entry():
     if request.method == 'POST':
         #Get data from Fetch api
         config_dict = request.get_json()
-        print(config_dict)
+
         #All data will be coming from the fetch api post request
 
         ip = config_dict['ipaddress']
@@ -100,7 +100,12 @@ def create_entry():
             
 
 
-        output = net_connect.send_config_set(config_commands, read_timeout=10000)
+        output = net_connect.send_config_set(
+            config_commands,
+            cmd_verify=False,  # Disable command verification
+            read_timeout=10000,
+            delay_factor=2
+            )
 
         final_command = 'show int ' + port
         #gets the show run comand

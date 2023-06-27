@@ -60,7 +60,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{ url_for('views.upload')}}">Upload</a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('upload.upload')}}">Upload</a>
             </li>
            
     
@@ -88,17 +88,51 @@
     </nav>
     <!--This is where navbar function ends.-->
       </header>
-  <div class="container-sm">
+  <div class="container-sm new_input">
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+    </div>
+    <div class="form-group">
+      <label for="password1">Password</label>
+      <input type="password" class="form-control" id="password" name="password" aria-describedby="password"
+        placeholder="Enter your Password">
+    </div>
+    <div class="form-group">
+      <label for="secret">Enable Secret</label>
+      <input type="password" class="form-control" id="secret" name="secret" aria-describedby="secret"
+        placeholder="Enter your Enable Secret Password">
+    </div>
+    <div class="form-group">
+      <label for="selectBox">Add or Remove these configurations:</label>
+      <select class="form-select" id="selectBox" name="selectBox" required>
+        <option value="">Choose an option</option>
+        <option value="add">Add</option>
+        <option value="remove">Remove</option>
+      </select>
+    </div>
     <div class="mb-3">
       <label for="formFile" class="form-label">Input your .txt and .csv</label>s
       <input class="form-control" type="file" id="formFile">
     </div>
+    <div class="py-4 container-sm">
+      <button class="btn btn-primary" id="submitButton" onclick="upload_config()">Send Config</button>
+    </div>
+
+
+  
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <p>Result:</p>
+    <p id="result"></p>
+
   </div>
 
 
 
 
-
+  <script src="{{ url_for('static', filename='styles/upload.js')}}"></script>
   <script src="{{ url_for('static', filename='styles/bootstrap.bundle.min.js')}}"></script>
 </body>
 

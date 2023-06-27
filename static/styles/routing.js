@@ -114,7 +114,7 @@ function routing_config() {
             destination_network: destination_network.value
         }
     }
-    console.log(config_file)
+
     fetch(`${window.origin}/routing/routing/config`, {
         method: 'POST',
         credentials: 'include',

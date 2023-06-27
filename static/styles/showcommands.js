@@ -15,7 +15,7 @@ function showcommands_config () {
         secret: secret.value,
         selectedOption: selectedOption.value
     }
-    console.log(config_file)
+
     fetch(`${window.origin}/showcommands/showcommands_config`, {
         method: 'POST',
         credentials: 'include',
@@ -30,19 +30,25 @@ function showcommands_config () {
 
     })
 
-    .then(reponse => Response.text())
+    .then(response => response.text())
     .then(data => {
-        console.log(data)
-        console.log(typeof data)
-        
+
         obj = JSON.parse(data)
-        console.log(obj)
-
         var result = obj.result;
-        console.log(result);
-
         const words = result.split(' ')
-        console.log(words);
+
+        let formattedResult = ''; // Empty variable 
+        for (let count = 0; count < words.length; count++ ) {
+          formattedResult += words[count] + ' ';
+
+
+          if ((count + 1) % 6 === 0) {
+            formattedResult += '<br>';
+          }
+
+        }
+
+        document.getElementById('result').innerHTML = formattedResult; 
 
     })
 

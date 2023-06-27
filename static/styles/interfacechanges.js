@@ -93,9 +93,9 @@ function sendconfig() {
 
   }
 
-  console.log(config_file);
 
-  fetch(`${window.origin}/interfacechanges/config`,{
+
+  fetch(`${window.origin}/interfacechanges/interfacechanges/config`,{
     method: 'POST',
     credentials: 'include',
     body: JSON.stringify(config_file),
@@ -111,27 +111,25 @@ function sendconfig() {
   })
   .then(response => response.text())
   .then(data => {
-    console.log(data);
-    console.log(typeof data);
+
     obj = JSON.parse(data);
-    console.log(obj);
-    console.log(typeof obj);
+
     var result = obj.result;
-    console.log(result);
+
     const words =  result.split(' ');
-    console.log(words);
+
 
     let formattedResult = ''; // Empty variable 
     for (let count = 0; count < words.length; count++ ) {
-      formattedResult += words[i] + ' ';
-      console.log(formattedResult);
+      formattedResult += words[count] + ' ';
 
-      if ((i + 1) % 6 === 0) {
+
+      if ((count + 1) % 6 === 0) {
         formattedResult += '<br>';
       }
 
     }
-    console.log(formattedResult);
+
     document.getElementById('result').innerHTML = formattedResult; 
   })
 }

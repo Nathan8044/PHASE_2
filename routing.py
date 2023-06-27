@@ -82,17 +82,17 @@ def routing_config():
             config_commands = '\n'.join(config).format(destination_network=destination_network)
 
 
-        print(config_commands)
+
         output = net_connect.send_config_set(
             config_commands,
             cmd_verify=False,  # Disable command verification
             read_timeout=10000,
             delay_factor=2
             )
-        print(output)
+
         #gets the show run comand
         result = net_connect.send_command('sh ip int brief',read_timeout=120)
-        print(result)
+
         return render_template("routing.html", result=result)
     else:
 

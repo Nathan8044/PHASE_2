@@ -6,6 +6,8 @@ from interfacesecurity import interfacesecurity_blueprint
 from routing import routing_blueprint
 from global_commands import global_commands_blueprint
 from showcommands import showcommands_blueprint
+from upload import upload_blueprint
+
 
 
 
@@ -19,6 +21,7 @@ app.register_blueprint(interfacesecurity_blueprint, url_prefix="/interfacesecuri
 app.register_blueprint(routing_blueprint, url_prefix="/routing")
 app.register_blueprint(global_commands_blueprint, url_prefix='/globalcommands')
 app.register_blueprint(showcommands_blueprint, url_prefix='/showcommands')
+app.register_blueprint(upload_blueprint, url_prefix='/upload')
 
 
 if __name__ == '__main__':

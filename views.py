@@ -11,10 +11,6 @@ def home():
 def priv_commands():
     return render_template("priv_commands.html")
 
-@views.route("/upload")
-def upload():
-    return render_template("upload.html")
-
 @views.route("/loginpage")
 def login():
     return render_template("login.html")

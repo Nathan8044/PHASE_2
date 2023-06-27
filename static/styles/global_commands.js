@@ -24,7 +24,6 @@ selectBox.addEventListener('change', function () {
     }
 })
 
-
 // start of function to send config
 function global_commands_config() {
 
@@ -34,9 +33,6 @@ function global_commands_config() {
     var password = document.getElementById('password');
     var secret = document.getElementById('secret');
     var selectedOption = document.getElementById('selectBox').value
-
-
-
 
 
     if (selectedOption == 'vlan_name') {
@@ -63,9 +59,8 @@ function global_commands_config() {
             selectedOption: selectedOption,
             ip_default_gateway: ip_default_gateway.value
         }
-
     }
-    console.log(config_file)
+
     fetch(`${window.origin}/globalcommands/globalcommands/config`, {
         method: 'POST',
         credentials: 'include',
@@ -75,39 +70,29 @@ function global_commands_config() {
             "content-type": "application/json",
             'X-CSRFToken': csrfToken
         })
-        
-
-
     })
 
     .then(response => response.text())  // Parse the response as text
     .then(data => {
         // Intitial data is a string
 	    obj = JSON.parse(data);
-        // Converts string to object since it was already 
-        console.log(obj)
-        // You can check out the type of the element
-        console.log(typeof obj)
-
         // Index the obj to use it 
         var result = obj.result;
-        console.log(result);
+
         // Split based on spaces and new lines 
         const words = result.split(' ');
-        console.log(words);
+
         // Intialize new variable 
         let formattedResult = ''; // Renamed the variable
         // For loop through the words string to format it to the html 
-        for (let count = 0; count < words.length; i++) {
+        for (let count = 0; count < words.length; count++) {
           formattedResult += words[count] + ' ';
-          console.log(formattedResult);
+
           
-          if ((i + 1) % 6 === 0) {
+          if ((count + 1) % 6 === 0) {
             formattedResult += '<br>';
           }
         }
-        
-        console.log(formattedResult);
         document.getElementById('result').innerHTML = words;
       })
 }

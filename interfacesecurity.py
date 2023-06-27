@@ -17,7 +17,7 @@ def config_entry():
     if request.method == 'POST':
         #Get data from Fetch api
         config_dict = request.get_json()
-        print(config_dict)
+
 
 
         ip = config_dict['ipaddress']
@@ -62,9 +62,14 @@ def config_entry():
         config_commands = '\n'.join(config).format(port=port, max_devices=max_devices, violation=violation) 
 
 
-        output = net_connect.send_config_set(config_commands,read_timeout=10000)
+        output = net_connect.send_config_set(
+            config_commands,
+            cmd_verify=False,  # Disable command verification
+            read_timeout=10000,
+            delay_factor=2
+            )
 
-        final_command = 'show int ' + port
+        final_command = 'show port-security int ' + port
         #gets the show run comand
         result = net_connect.send_command(final_command, read_timeout=120)
 
