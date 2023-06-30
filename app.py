@@ -11,6 +11,7 @@ from upload import upload_blueprint
 
 
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'NESMOS'
 csrf.CSRFProtect(app)
@@ -22,6 +23,7 @@ app.register_blueprint(routing_blueprint, url_prefix="/routing")
 app.register_blueprint(global_commands_blueprint, url_prefix='/globalcommands')
 app.register_blueprint(showcommands_blueprint, url_prefix='/showcommands')
 app.register_blueprint(upload_blueprint, url_prefix='/upload')
+
 
 
 if __name__ == '__main__':

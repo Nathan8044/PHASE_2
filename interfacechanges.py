@@ -11,7 +11,7 @@ interfacechanges_blueprint= Blueprint(__name__, "interfacechanges")
 
 @interfacechanges_blueprint.route("/interfacechanges", methods=['POST', 'GET'])
 def interfacechanges():
-    print("test from /interfacechanges")
+
     
     return render_template("interface_changes.html")
 

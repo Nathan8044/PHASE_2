@@ -53,9 +53,8 @@ selectBox.addEventListener('change', function() {
 function routing_config() {
     var csrfToken = document.querySelector('input[name="csrf_token"]').value;
     var ipaddress = document.getElementById('ipaddress');
-    var username = document.getElementById('username');
-    var password = document.getElementById('password');
-    var secret = document.getElementById('secret');
+    var username = localStorage.getItem('username')
+    var password = localStorage.getItem('password')
     var selectedOption = document.getElementById('selectBox').value
 
     // conditional statements to decided which route to choose 
@@ -65,9 +64,9 @@ function routing_config() {
         var next_hop_address = document.getElementById('next_hop_value1');
         config_file = {
             ipaddress: ipaddress.value,
-            username: username.value,
-            password: password.value, 
-            secret: secret.value,
+            username: username,
+            password: password, 
+            secret: password,
             routing_protocol: selectedOption,
             destination_network: destination_network.value,
             destination_subnet: destination_subnet.value,
@@ -79,9 +78,9 @@ function routing_config() {
         var exit_interface = document.getElementById('exit_interface_value2');
             config_file = {
                 ipaddress: ipaddress.value,
-                username: username.value,
-                password: password.value, 
-                secret: secret.value,
+                username: username,
+                password: password, 
+                secret: password,
                 routing_protocol: selectedOption,
                 destination_network: destination_network.value, 
                 destination_subnet: destination_subnet.value, 
@@ -94,9 +93,9 @@ function routing_config() {
         var next_hop_address = document.getElementById('next_hop_value3');
         config_file = {
             ipaddress: ipaddress.value,
-            username: username.value,
-            password: password.value, 
-            secret: secret.value,
+            username: username,
+            password: password, 
+            secret: password,
             routing_protocol: selectedOption,
             destination_network: destination_network.value,
             destination_subnet: destination_subnet.value,
@@ -107,9 +106,9 @@ function routing_config() {
         var destination_network = document.getElementById('destination_network4');
         config_file = {
             ipaddress: ipaddress.value,
-            username: username.value,
-            password: password.value, 
-            secret: secret.value,
+            username: username,
+            password: password, 
+            secret: password,
             routing_protocol: selectedOption,
             destination_network: destination_network.value
         }

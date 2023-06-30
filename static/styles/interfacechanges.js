@@ -64,9 +64,8 @@ function sendconfig() {
 
 
   var ipaddress = document.getElementById('ipaddress');
-  var username = document.getElementById('username');
-  var password = document.getElementById('password');
-  var secret = document.getElementById('secret');
+  var username = localStorage.getItem('username')
+  var password = localStorage.getItem('password')
   var port = document.getElementById('port');
   var selectedOption = document.getElementById('selectBox');
   var VLANS = document.getElementById('trunk_port');
@@ -78,9 +77,9 @@ function sendconfig() {
 
   var config_file = {
     ipaddress: ipaddress.value,
-    username: username.value,
-    password: password.value,
-    secret: secret.value,
+    username: username,
+    password: password,
+    secret: password,
     port: port.value,
     selectedOption: selectedOption.value,
     VLANS: VLANS.value,
@@ -112,7 +111,7 @@ function sendconfig() {
   .then(response => response.text())
   .then(data => {
 
-    obj = JSON.parse(data);
+    obj = JSON.parse(data);a
 
     var result = obj.result;
 

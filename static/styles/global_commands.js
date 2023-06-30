@@ -29,9 +29,8 @@ function global_commands_config() {
 
     var csrfToken = document.querySelector('input[name="csrf_token"]').value;
     var ipaddress = document.getElementById('ipaddress');
-    var username = document.getElementById('username');
-    var password = document.getElementById('password');
-    var secret = document.getElementById('secret');
+    var username = localStorage.getItem('username')
+    var password = localStorage.getItem('password')
     var selectedOption = document.getElementById('selectBox').value
 
 
@@ -41,9 +40,9 @@ function global_commands_config() {
 
         config_file = {
             ipaddress: ipaddress.value,
-            username: username.value,
-            password: password.value, 
-            secret: secret.value,
+            username: username,
+            password: password, 
+            secret: password,
             selectedOption: selectedOption,
             vlan_id: vlan_id.value,
             vlan_name: vlan_name.value

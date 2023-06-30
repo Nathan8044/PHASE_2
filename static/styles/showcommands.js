@@ -4,15 +4,14 @@ function showcommands_config () {
 
     var selectedOption = document.getElementById('selectBox');
     var ipaddress = document.getElementById('ipaddress');
-    var username = document.getElementById('username');
-    var password = document.getElementById('password');
-    var secret = document.getElementById('secret');
+    var username = localStorage.getItem('username')
+    var password = localStorage.getItem('password')
 
     config_file = {
         ipaddress: ipaddress.value,
-        username: username.value,
-        password: password.value, 
-        secret: secret.value,
+        username: username,
+        password: password, 
+        secret: password,
         selectedOption: selectedOption.value
     }
 
