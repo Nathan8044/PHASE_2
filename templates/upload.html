@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     
-    
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/upload.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+
     
   <title>NESMOS</title>
   <link rel="icon" href="NETMO_LOGO.png">
@@ -126,6 +128,13 @@
 
     <p>Result:</p>
     <p id="result"></p>
+
+
+  </div>
+  <div class="container-sm new_input">
+
+    <p id="example_csv">Example CSV File</p>
+    <img src="{{ url_for('static', filename='images/config_example.png')}}" class="upload_image">
 
   </div>
 
